@@ -12,6 +12,7 @@ using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class NoticiasController : Controller
     {
         private readonly MvcNoticiaContext _context;
