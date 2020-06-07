@@ -40,5 +40,23 @@ namespace PortfolioCore.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        // GET: Noticias/Detalles/5
+        public async Task<IActionResult> Detalle(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var noticia = await _context.Noticia
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (noticia == null)
+            {
+                return NotFound();
+            }
+
+            return View(noticia);
+        }
     }
 }

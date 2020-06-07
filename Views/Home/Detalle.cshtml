@@ -1,0 +1,21 @@
+﻿@model PortfolioCore.Models.Noticia
+
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+    <div class="text-center">
+        <h1>@Model.titulo</h1>
+
+        <h4>@Model.descripcion</h4>
+
+        <img class="m-2" src="@("~/image/" + Model.imagen)" asp-append-version="true" alt="Notice card image" />
+
+        <p>@Model.contenido</p>
+
+        <div>
+            <a asp-action="Index">Volver</a>
+        </div>
+    </div>
+
+

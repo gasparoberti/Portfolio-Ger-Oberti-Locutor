@@ -20,12 +20,12 @@
         {
             <div class="card-col-4 m-3">
                 <div class="card">
-                    <img class="card-img-top" src="@("/image/" + item.imagen)" alt="Card image">
+                    <img class="boximg card-img-top" src="@("/image/" + item.imagen)" alt="Card image">
                     <div class="card-body text-center">
                         <h5 class="card-title">@item.titulo</h5>
                         <p class="card-text">@item.descripcion</p>
                         <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
-                        <a asp-route-id="@item.id" asp-action="Leer" asp-controller="Noticias" class="btn btn-light">Leer más...</a>
+                        <a asp-route-id="@item.id" asp-action="Detalle" asp-controller="Home" class="btn btn-light">Leer más...</a>
                     </div>
                 </div>
             </div>

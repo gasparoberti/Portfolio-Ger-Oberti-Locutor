@@ -15,19 +15,22 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PortfolioCore</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    @*<partial name="_LoginPartial" />*@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Tips">Tips</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Relatos">Relatos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Podcasts">Podcasts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre mí">Sobre mí</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -48,40 +51,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="border-top pt-4">
+    <footer class="border-top pt-3">
 
         <div class="container">
-
-            @*<div class="row pb-3">
-                <div class="col-md-12">
-                    <div class="mb-5 flex-center">
-                        <img src="\icons\facebook.svg" alt="" width="32" height="32" title="Facebook">
-                        <img src="\icons\facebook.svg" alt="" width="32" height="32" title="Facebook">
-                        <img src="\icons\facebook.svg" alt="" width="32" height="32" title="Facebook">
-                        <img src="\icons\facebook.svg" alt="" width="32" height="32" title="Facebook">
-                        <img src="\icons\facebook.svg" alt="" width="32" height="32" title="Facebook">
-                        <img src="\icons\facebook.svg" alt="" width="32" height="32" title="Facebook">
-                    </div>
-                </div>
-            </div>
-    
-            <div class="row pb-3">
-                <div class="col-md-12">
-                    <div class="mb-5 flex-center">
-                        <a class="fb-ic">
-                            <i class="fas fa-camera"></i>
-                        </a>
-                        <a class="tw-ic">
-                            <i class="fas fa-camera"></i>
-                        </a>
-                        <a class="gplus-ic">
-                            <i class="fas fa-camera"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>*@
-
-
 
             @if (SignInManager.IsSignedIn(User))
             {
