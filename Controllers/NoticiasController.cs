@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MvcNoticia.Data;
 using PortfolioCore.Models;
 
@@ -63,21 +67,29 @@ namespace PortfolioCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                //guarda la imagen en wwwroot/image
-                string wwwRootPath = _hostEnvironment.WebRootPath;
-                string fileName = Path.GetFileNameWithoutExtension(noticia.archivoImagen.FileName);
-                string extension = Path.GetExtension(noticia.archivoImagen.FileName);
-                noticia.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/image/", fileName);
-
-                using (var fileStream = new FileStream(path, FileMode.Create))
+                if (noticia.archivoImagen == null)
                 {
-                    await noticia.archivoImagen.CopyToAsync(fileStream);
+                    ModelState.AddModelError("Imagen", "Imagen es un campo requerido.");    //no andaaaaa!
                 }
+                else
+                {
+                    //guarda la imagen en wwwroot/image
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(noticia.archivoImagen.FileName);
+                    string extension = Path.GetExtension(noticia.archivoImagen.FileName);
+                    noticia.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/image/", fileName);
 
-                _context.Add(noticia);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await noticia.archivoImagen.CopyToAsync(fileStream);
+                    }
+
+                    _context.Add(noticia);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                
             }
             return View(noticia);
         }
