@@ -7,20 +7,20 @@
     <div class="card bg-dark text-white mb-3">
         @*<img class="card-img" src="..." alt="Card image">*@
         @*modificar para qe lo obtenga dinamicamente*@
-        <img src="@("~/image/lacumbrecita1.jpg")" asp-append-version="true" width="100%" height="100%" />
+        @*<img src="@("~/image/lacumbrecita1.jpg")" asp-append-version="true" />*@
+        <img src="@("~/image/lacumbrecita1.jpg")" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
         <div class="card-img-overlay">
             <h5 class="card-title">Germán Oberti Locutor</h5>
         </div>
     </div>
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        @if (@item.visible == true)
+    <div class="card-columns">
+        @foreach (var item in Model.OrderBy(i => i.fecha_alta))
         {
-            <div class="card-col-4 m-3">
+            @if (@item.visible == true)
+            {
                 <div class="card">
-                    <img class="imageSize card-img-top" src="@("/image/" + item.imagen)" alt="Card image" height= "200px" width= "100%" display= "block">
+                    <img class="card-img-top" src="@("/image/" + item.imagen)" alt="Card image" style="object-fit: cover">
                     <div class="card-body text-center">
                         <h5 class="card-title">@item.titulo</h5>
                         <p class="card-text">@item.descripcion</p>
@@ -28,8 +28,7 @@
                         <a asp-route-id="@item.id" asp-action="Detalle" asp-controller="Home" class="btn btn-light">Leer más...</a>
                     </div>
                 </div>
-            </div>
+            }
         }
-    }
 </div>
 
