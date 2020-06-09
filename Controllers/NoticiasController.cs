@@ -103,7 +103,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,archivoImagen,visible,fecha_alta")] Noticia noticia)
+        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,imagen,visible,fecha_alta,archivoImagen")] Noticia noticia)
         {
             if (id != noticia.id)
             {
@@ -114,16 +114,20 @@ namespace PortfolioCore.Controllers
             {
                 try
                 {
-                    //guarda la imagen en wwwroot/image
                     string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string fileName = Path.GetFileNameWithoutExtension(noticia.archivoImagen.FileName);
-                    string extension = Path.GetExtension(noticia.archivoImagen.FileName);
-                    noticia.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    string path = Path.Combine(wwwRootPath + "/image/", fileName);
+                    string path = null;
 
-                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    if (noticia.archivoImagen != null)
                     {
-                        await noticia.archivoImagen.CopyToAsync(fileStream);
+                        string fileName = Path.GetFileNameWithoutExtension(noticia.archivoImagen.FileName);
+                        string extension = Path.GetExtension(noticia.archivoImagen.FileName);
+                        noticia.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        path = Path.Combine(wwwRootPath + "/image/", fileName);
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await noticia.archivoImagen.CopyToAsync(fileStream);
+                        }
                     }
 
                     _context.Update(noticia);
