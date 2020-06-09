@@ -9,7 +9,7 @@
         @*modificar para qe lo obtenga dinamicamente*@
         <img src="@("~/image/lacumbrecita1.jpg")" asp-append-version="true" width="100%" height="100%" />
         <div class="card-img-overlay">
-            <h5 class="card-title">Germán Oberti</h5>
+            <h5 class="card-title">Germán Oberti Locutor</h5>
         </div>
     </div>
 
@@ -20,7 +20,7 @@
         {
             <div class="card-col-4 m-3">
                 <div class="card">
-                    <img class="boximg card-img-top" src="@("/image/" + item.imagen)" alt="Card image">
+                    <img class="imageSize card-img-top" src="@("/image/" + item.imagen)" alt="Card image" height= "200px" width= "100%" display= "block">
                     <div class="card-body text-center">
                         <h5 class="card-title">@item.titulo</h5>
                         <p class="card-text">@item.descripcion</p>

@@ -69,7 +69,7 @@ namespace PortfolioCore.Controllers
             {
                 if (noticia.archivoImagen == null)
                 {
-                    ModelState.AddModelError("Imagen", "Imagen es un campo requerido.");    //no andaaaaa!
+                    ModelState.AddModelError("archivoImagen", "Imagen es un campo requerido.");
                 }
                 else
                 {

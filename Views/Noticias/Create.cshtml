@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="fecha_alta" class="control-label"></label>
-                <input asp-for="fecha_alta" class="form-control" />
+                <input asp-for="@DateTime.Now" class="form-control" />
                 <span asp-validation-for="fecha_alta" class="text-danger"></span>
             </div>
             <div class="form-group">
