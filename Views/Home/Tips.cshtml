@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PortfolioCore.Models.Tip>
+
+@{
+    ViewData["Title"] = "Tips";
+}
+
+<div class="text-center mb-5">
+    <h1>Tips</h1>
+</div>
+
+<div class="card-deck">
+    @foreach (var item in Model.OrderBy(i => i.fecha_alta))
+    {
+        @if (@item.visible == true)
+        {
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="@("/image/" + item.imagen)" alt="Card image" style="object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.titulo</h5>
+                        @*<p class="card-text">@item.descripcion</p>*@
+                        <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
+                        <div class="text-center">
+                            <a asp-route-id="@item.id" asp-action="DetalleNoticia" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

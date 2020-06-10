@@ -18,13 +18,19 @@ namespace PortfolioCore.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly MvcNoticiaContext _context;
         private readonly MvcRelatoContext _contextRelato;
+        private readonly MvcTipContext _contextTip;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, MvcNoticiaContext context, MvcRelatoContext contextRelato, IWebHostEnvironment hostEnvironment)
+        public HomeController(ILogger<HomeController> logger, 
+            MvcNoticiaContext context, 
+            MvcRelatoContext contextRelato,
+            MvcTipContext contextTip, 
+            IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
             _context = context;
             _contextRelato = contextRelato;
+            _contextTip = contextTip;
             this._hostEnvironment = hostEnvironment;
         }
 
@@ -37,6 +43,11 @@ namespace PortfolioCore.Controllers
         {
             return View(await _contextRelato.Relato.ToListAsync());
         }
+        
+        public async Task<IActionResult> Tips()
+        {
+            return View(await _contextTip.Tip.ToListAsync());
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -45,7 +56,7 @@ namespace PortfolioCore.Controllers
         }
 
         // GET: Noticias/Detalles/5
-        public async Task<IActionResult> Detalle(int? id)
+        public async Task<IActionResult> DetalleNoticia(int? id)
         {
             if (id == null)
             {

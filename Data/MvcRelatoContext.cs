@@ -11,5 +11,7 @@ namespace PortfolioCore.Data
         }
 
         public DbSet<Relato> Relato { get; set; }
+
+        public DbSet<PortfolioCore.Models.Tip> Tip { get; set; }
     }
 }

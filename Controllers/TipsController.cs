@@ -5,30 +5,29 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MvcNoticia.Data;
+using PortfolioCore.Data;
 using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
-    public class NoticiasController : Controller
+    public class TipsController : Controller
     {
-        private readonly MvcNoticiaContext _context;
+        private readonly MvcTipContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public NoticiasController(MvcNoticiaContext context, IWebHostEnvironment hostEnvironment)
+        public TipsController(MvcTipContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
             this._hostEnvironment = hostEnvironment;
         }
 
-        // GET: Noticias
+        // GET: Tips
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Noticia.ToListAsync());
+            return View(await _context.Tip.ToListAsync());
         }
 
-        // GET: Noticias/Details/5
+        // GET: Tips/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,32 +35,32 @@ namespace PortfolioCore.Controllers
                 return NotFound();
             }
 
-            var noticia = await _context.Noticia
+            var tip = await _context.Tip
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (noticia == null)
+            if (tip == null)
             {
                 return NotFound();
             }
 
-            return View(noticia);
+            return View(tip);
         }
 
-        // GET: Noticias/Create
+        // GET: Tips/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Noticias/Create
+        // POST: Tips/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,titulo,descripcion,contenido,archivoImagen,visible,fecha_alta")] Noticia noticia)
+        public async Task<IActionResult> Create([Bind("id,titulo,descripcion,contenido,archivoImagen,visible,fecha_alta")] Tip tip)
         {
             if (ModelState.IsValid)
             {
-                if (noticia.archivoImagen == null)
+                if (tip.archivoImagen == null)
                 {
                     ModelState.AddModelError("archivoImagen", "Imagen es un campo requerido.");
                 }
@@ -69,26 +68,25 @@ namespace PortfolioCore.Controllers
                 {
                     //guarda la imagen en wwwroot/image
                     string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string fileName = Path.GetFileNameWithoutExtension(noticia.archivoImagen.FileName);
-                    string extension = Path.GetExtension(noticia.archivoImagen.FileName);
-                    noticia.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string fileName = Path.GetFileNameWithoutExtension(tip.archivoImagen.FileName);
+                    string extension = Path.GetExtension(tip.archivoImagen.FileName);
+                    tip.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                     string path = Path.Combine(wwwRootPath + "/image/", fileName);
 
                     using (var fileStream = new FileStream(path, FileMode.Create))
                     {
-                        await noticia.archivoImagen.CopyToAsync(fileStream);
+                        await tip.archivoImagen.CopyToAsync(fileStream);
                     }
 
-                    _context.Add(noticia);
+                    _context.Add(tip);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
-                
             }
-            return View(noticia);
+            return View(tip);
         }
 
-        // GET: Noticias/Edit/5
+        // GET: Tips/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,22 +94,22 @@ namespace PortfolioCore.Controllers
                 return NotFound();
             }
 
-            var noticia = await _context.Noticia.FindAsync(id);
-            if (noticia == null)
+            var tip = await _context.Tip.FindAsync(id);
+            if (tip == null)
             {
                 return NotFound();
             }
-            return View(noticia);
+            return View(tip);
         }
 
-        // POST: Noticias/Edit/5
+        // POST: Tips/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,imagen,visible,fecha_alta,archivoImagen")] Noticia noticia)
+        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,imagen,visible,fecha_alta,archivoImagen")] Tip tip)
         {
-            if (id != noticia.id)
+            if (id != tip.id)
             {
                 return NotFound();
             }
@@ -123,25 +121,25 @@ namespace PortfolioCore.Controllers
                     string wwwRootPath = _hostEnvironment.WebRootPath;
                     string path = null;
 
-                    if (noticia.archivoImagen != null)
+                    if (tip.archivoImagen != null)
                     {
-                        string fileName = Path.GetFileNameWithoutExtension(noticia.archivoImagen.FileName);
-                        string extension = Path.GetExtension(noticia.archivoImagen.FileName);
-                        noticia.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        string fileName = Path.GetFileNameWithoutExtension(tip.archivoImagen.FileName);
+                        string extension = Path.GetExtension(tip.archivoImagen.FileName);
+                        tip.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                         path = Path.Combine(wwwRootPath + "/image/", fileName);
 
                         using (var fileStream = new FileStream(path, FileMode.Create))
                         {
-                            await noticia.archivoImagen.CopyToAsync(fileStream);
+                            await tip.archivoImagen.CopyToAsync(fileStream);
                         }
                     }
 
-                    _context.Update(noticia);
+                    _context.Update(tip);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!NoticiaExists(noticia.id))
+                    if (!TipExists(tip.id))
                     {
                         return NotFound();
                     }
@@ -152,10 +150,10 @@ namespace PortfolioCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(noticia);
+            return View(tip);
         }
 
-        // GET: Noticias/Delete/5
+        // GET: Tips/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -163,38 +161,38 @@ namespace PortfolioCore.Controllers
                 return NotFound();
             }
 
-            var noticia = await _context.Noticia
+            var tip = await _context.Tip
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (noticia == null)
+            if (tip == null)
             {
                 return NotFound();
             }
 
-            return View(noticia);
+            return View(tip);
         }
 
-        // POST: Noticias/Delete/5
+        // POST: Tips/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var noticia = await _context.Noticia.FindAsync(id);
+            var tip = await _context.Tip.FindAsync(id);
 
             //borra imagen de wwwroot/image
-            var noticiaPath = Path.Combine(_hostEnvironment.WebRootPath, "image", noticia.imagen);
+            var noticiaPath = Path.Combine(_hostEnvironment.WebRootPath, "image", tip.imagen);
             if (System.IO.File.Exists(noticiaPath))
             {
                 System.IO.File.Delete(noticiaPath);
             }
 
-            _context.Noticia.Remove(noticia);
+            _context.Tip.Remove(tip);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool NoticiaExists(int id)
+        private bool TipExists(int id)
         {
-            return _context.Noticia.Any(e => e.id == id);
+            return _context.Tip.Any(e => e.id == id);
         }
     }
 }
