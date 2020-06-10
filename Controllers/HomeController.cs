@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MvcNoticia.Data;
+using PortfolioCore.Data;
 using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
@@ -16,12 +17,14 @@ namespace PortfolioCore.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly MvcNoticiaContext _context;
+        private readonly MvcRelatoContext _contextRelato;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, MvcNoticiaContext context, IWebHostEnvironment hostEnvironment)
+        public HomeController(ILogger<HomeController> logger, MvcNoticiaContext context, MvcRelatoContext contextRelato, IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
             _context = context;
+            _contextRelato = contextRelato;
             this._hostEnvironment = hostEnvironment;
         }
 
@@ -30,9 +33,9 @@ namespace PortfolioCore.Controllers
             return View(await _context.Noticia.ToListAsync());
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Relatos()
         {
-            return View();
+            return View(await _contextRelato.Relato.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

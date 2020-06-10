@@ -5,8 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PortfolioCore.Models
 {
-    public class Noticia
+    public class Tip
     {
+        [ScaffoldColumn(false)]
         public int id { get; set; }
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PortfolioCore.Models.Relato>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="text-center mb-5">
+    <h1>Relatos</h1>
+</div>
+
+@*<div className="row mx-2">
+    @foreach (var item in Model)
+    {
+        if (item.visible == true)
+        {*@
+@*<div className="col-md-4 my-2">
+        <div className="embed-responsive embed-responsive-16by9">
+            <iframe className="embed-responsive-item"
+                    src="@item.url"
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>*@
+@*}
+        }
+    </div>*@
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (item.visible == true)
+        {
+            <div class="col-sm-6 text-center mb-5">
+                <h4>La concha de tu madre iframe.</h4>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="@item.url" allowfullscreen></iframe>
+                </div>
+                <p>La re mi misima concha de la lora</p>
+                <a asp-route-id="@item.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light">Leer más...</a>
+            </div>
+        }
+    }
+</div>
+
+@*https://youtu.be/JbNRn-kQ6AA
+
+<iframe width="853" height="480" src="https://www.youtube.com/embed/JbNRn-kQ6AA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
