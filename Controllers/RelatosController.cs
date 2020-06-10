@@ -10,7 +10,6 @@ using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
     public class RelatosController : Controller
     {
         private readonly MvcRelatoContext _context;
@@ -55,7 +54,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,url,visible")] Relato relato)
+        public async Task<IActionResult> Create([Bind("id,url,titulo,descripcion,contenido,visible,fecha_alta")] Relato relato)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +86,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,url,visible")] Relato relato)
+        public async Task<IActionResult> Edit(int id, [Bind("id,url,titulo,descripcion,contenido,visible,fecha_alta")] Relato relato)
         {
             if (id != relato.id)
             {

@@ -1,0 +1,21 @@
+﻿@model PortfolioCore.Models.Relato
+
+@{
+    ViewData["Title"] = "DetalleRelato";
+}
+
+    <div class="text-center">
+        <h1>@Model.titulo</h1>
+
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="@Model.url" allowfullscreen></iframe>
+        </div>
+
+        <h5>@Model.descripcion</h5>
+
+        <p>@Model.contenido</p>
+
+        <div>
+            <a asp-action="Relatos" class="btn btn-light m-3">Todos los relatos</a>
+        </div>
+    </div>

@@ -61,5 +61,23 @@ namespace PortfolioCore.Controllers
 
             return View(noticia);
         }
+        
+        // GET: Relatos/Detalles/5
+        public async Task<IActionResult> DetalleRelato(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var relato = await _contextRelato.Relato
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (relato == null)
+            {
+                return NotFound();
+            }
+
+            return View(relato);
+        }
     }
 }

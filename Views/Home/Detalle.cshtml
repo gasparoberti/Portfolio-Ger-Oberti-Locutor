@@ -7,14 +7,15 @@
     <div class="text-center">
         <h1>@Model.titulo</h1>
 
-        <h4>@Model.descripcion</h4>
+        <div class="text-muted">
+            <h5>@Model.descripcion</h5>
+        </div>
 
         <img class="m-2" src="@("~/image/" + Model.imagen)" asp-append-version="true" alt="Notice card image" style="object-fit: cover; width: 70vw"/>
 
         <p>@Model.contenido</p>
 
         <div>
-            @*<a asp-action="Index">Todas las noticias</a>*@
             <a asp-action="Index" class="btn btn-light m-3">Todas las noticias</a>
         </div>
     </div>
