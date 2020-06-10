@@ -21,24 +21,36 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Tips">Tips</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Relatos">Relatos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Podcasts">Podcasts</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Podcasts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre mí">Sobre mí</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Tips</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Sobre mí</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Contacto</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Noticias" asp-action="Index">Noticias</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Relatos" asp-action="Index">Relatos</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Configuración
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Home</a>
+                                    <a class="dropdown-item" href="#">Sobre Mí</a>
+                                    <a class="dropdown-item" href="#">Contacto</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Noticias" asp-action="Index">Noticias</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Relatos" asp-action="Index">Relatos</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Podcasts</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="" asp-action="">Tips</a>
+                                </div>
                             </li>
                         }
 
