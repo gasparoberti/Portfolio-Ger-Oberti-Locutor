@@ -198,3 +198,4 @@ D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\PortfolioCore.p
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\PortfolioCore.genruntimeconfig.cache
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\PortfolioCore.csprojAssemblyReference.cache
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\DetalleTip.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\SobreMi.cshtml.g.cs

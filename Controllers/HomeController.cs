@@ -49,6 +49,16 @@ namespace PortfolioCore.Controllers
             return View(await _contextTip.Tip.ToListAsync());
         }
 
+        //public async Task<IActionResult> SobreMi()
+        //{
+        //    return View(await _contextTip.Tip.ToListAsync());
+        //}
+
+        public IActionResult SobreMi()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
