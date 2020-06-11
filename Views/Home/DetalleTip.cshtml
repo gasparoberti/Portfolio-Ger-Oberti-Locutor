@@ -1,0 +1,21 @@
+﻿@model PortfolioCore.Models.Tip
+
+@{
+    ViewData["Title"] = "DetalleTip";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">@Model.titulo</h1>
+
+        <div class="text-muted">
+            <h5>@Model.descripcion</h5>
+        </div>
+
+        <img class="m-2" src="@("~/image/" + Model.imagen)" asp-append-version="true" alt="Tip image" style="object-fit: cover; width: 70vw" />
+
+        <p>@Model.contenido</p>
+
+        <div>
+            <a asp-action="Tips" class="btn btn-light m-3">Todos los tips</a>
+        </div>
+    </div>

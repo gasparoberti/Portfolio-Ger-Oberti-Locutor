@@ -5,7 +5,7 @@
 }
 
 <div class="text-center mb-5">
-    <h1>Tips</h1>
+    <h1 class="display-4">Tips</h1>
 </div>
 
 <div class="card-deck">
@@ -21,7 +21,7 @@
                         @*<p class="card-text">@item.descripcion</p>*@
                         <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
                         <div class="text-center">
-                            <a asp-route-id="@item.id" asp-action="DetalleNoticia" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                            <a asp-route-id="@item.id" asp-action="DetalleTip" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
                         </div>
                     </div>
                 </div>
