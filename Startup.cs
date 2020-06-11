@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using PortfolioCore.Data;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 
 //using Microsoft.EntityFrameworkCore;
 using MvcNoticia.Data;
+using PortfolioCore.Data.Migrations;
 
 namespace PortfolioCore
 {
@@ -45,6 +41,9 @@ namespace PortfolioCore
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddDbContext<MvcTipContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddDbContext<MvcSobreMiContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 

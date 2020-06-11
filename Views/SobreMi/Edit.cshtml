@@ -1,0 +1,51 @@
+﻿@model PortfolioCore.Models.SobreMi
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SobreMi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="descripcion" class="control-label"></label>
+                <input asp-for="descripcion" class="form-control" />
+                <span asp-validation-for="descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="contenido" class="control-label"></label>
+                <input asp-for="contenido" class="form-control" />
+                <span asp-validation-for="contenido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagen" class="control-label"></label>
+                <input asp-for="imagen" class="form-control" />
+                <span asp-validation-for="imagen" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visible" /> @Html.DisplayNameFor(model => model.visible)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="prioridad" class="control-label"></label>
+                <input asp-for="prioridad" class="form-control" />
+                <span asp-validation-for="prioridad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

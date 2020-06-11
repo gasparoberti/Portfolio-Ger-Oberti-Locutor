@@ -19,18 +19,21 @@ namespace PortfolioCore.Controllers
         private readonly MvcNoticiaContext _context;
         private readonly MvcRelatoContext _contextRelato;
         private readonly MvcTipContext _contextTip;
+        private readonly MvcSobreMiContext _contextSobreMi;
         private readonly IWebHostEnvironment _hostEnvironment;
 
         public HomeController(ILogger<HomeController> logger, 
             MvcNoticiaContext context, 
             MvcRelatoContext contextRelato,
             MvcTipContext contextTip, 
+            MvcSobreMiContext contextSobreMi, 
             IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
             _context = context;
             _contextRelato = contextRelato;
             _contextTip = contextTip;
+            _contextSobreMi = contextSobreMi;
             this._hostEnvironment = hostEnvironment;
         }
 
@@ -49,14 +52,9 @@ namespace PortfolioCore.Controllers
             return View(await _contextTip.Tip.ToListAsync());
         }
 
-        //public async Task<IActionResult> SobreMi()
-        //{
-        //    return View(await _contextTip.Tip.ToListAsync());
-        //}
-
-        public IActionResult SobreMi()
+        public async Task<IActionResult> SobreMi()
         {
-            return View();
+            return View(await _contextSobreMi.SobreMi.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

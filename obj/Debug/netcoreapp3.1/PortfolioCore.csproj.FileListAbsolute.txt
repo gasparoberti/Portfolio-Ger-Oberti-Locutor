@@ -199,3 +199,8 @@ D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\PortfolioCore.g
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\PortfolioCore.csprojAssemblyReference.cache
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\DetalleTip.cshtml.g.cs
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\SobreMi.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\SobreMi\Create.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\SobreMi\Delete.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\SobreMi\Details.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\SobreMi\Edit.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\SobreMi\Index.cshtml.g.cs

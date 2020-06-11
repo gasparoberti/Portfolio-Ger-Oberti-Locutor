@@ -1,25 +1,30 @@
-﻿
+﻿@model IEnumerable<PortfolioCore.Models.SobreMi>
+
 @{
     ViewData["Title"] = "SobreMi";
-}    
+}
 
-    <div class="row m-5 align-items-center">
-        <div class="col-sm-4">
-            @*<img src="@("/image/" + item.imagen)" class="img-fluid float-left" alt="Image About"/>*@
-            <img src="~/image/ger_about_1.png" class="img-fluid float-left" alt="Image About"/>
+@foreach (var item in Model.OrderBy(i => i.prioridad))
+{
+    @if (@item.visible == true)
+    {
+        <div class="row m-5 align-items-center">
+            <div class="col-sm-4">
+                <img src="@("/image/" + item.imagen)" class="img-fluid float-left" alt="Image About" />
+            </div>
+            <div class="col-sm-8">
+                <h5 class="lead text-justify">
+                    @item.descripcion
+                    @if (@item.contenido != null)
+                    {
+                        <a data-toggle="collapse" href="@("#collapse" + item.id.ToString())" role="button" aria-expanded="false" aria-controls="collapseExample">Leer más...</a>
+                    }
+                </h5>
+            </div>
+
+            <div class="collapse" id="@("collapse" + item.id.ToString())">
+                <p class="text-justify m-4">@item.contenido</p>
+            </div>
         </div>
-        <div class="col-sm-8">
-            @*<p class="lead text-justify">@item.descripcion</p>*@
-            <p class="lead text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                <a asp-action="DetalleSobreMi" asp-route-id="">Leer más...</a>
-            </p>
-
-            @*@if (@item.contenido != null){*@
-                @*<a asp-action="DetalleSobreMi" asp-route-id="@item.id">Leer más...</a>*@
-                
-            @*}*@
-
-        </div>
-    </div>
+    }
+}
