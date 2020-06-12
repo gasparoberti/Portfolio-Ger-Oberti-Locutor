@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-    @foreach (var item in Model.OrderBy(i => i.fecha_alta)) //agregar y ordenar por prioridad
+    @foreach (var item in Model.OrderBy(i => i.prioridad))
     {
         if (item.visible == true)
         {
