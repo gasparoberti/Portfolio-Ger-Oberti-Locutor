@@ -28,13 +28,13 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(i => i.fecha_alta)) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.titulo)
             </td>
             <td>
-                <img src="@("~/image/" + item.imagen)" asp-append-version="true" width="200px" height="150px" />
+                <img src="@("~/image/" + item.imagen)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.visible)

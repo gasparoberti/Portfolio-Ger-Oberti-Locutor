@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Sobre Mí</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -14,9 +14,6 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.contenido)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.imagen)
@@ -31,16 +28,13 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(i => i.prioridad)) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contenido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagen)
+                <img src="@("~/image/" + item.imagen)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.visible)

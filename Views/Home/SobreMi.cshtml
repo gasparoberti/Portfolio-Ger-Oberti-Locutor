@@ -4,27 +4,65 @@
     ViewData["Title"] = "SobreMi";
 }
 
+    <div class="text-center mb-5">
+        <h1 class="display-4">Sobre Mí</h1>
+    </div>
+
+@{
+    int indice = 1;
+}
+
 @foreach (var item in Model.OrderBy(i => i.prioridad))
 {
     @if (@item.visible == true)
     {
         <div class="row m-5 align-items-center">
-            <div class="col-sm-4">
-                <img src="@("/image/" + item.imagen)" class="img-fluid float-left" alt="Image About" />
-            </div>
-            <div class="col-sm-8">
-                <h5 class="lead text-justify">
-                    @item.descripcion
-                    @if (@item.contenido != null)
-                    {
-                        <a data-toggle="collapse" href="@("#collapse" + item.id.ToString())" role="button" aria-expanded="false" aria-controls="collapseExample">Leer más...</a>
-                    }
-                </h5>
-            </div>
+            @if (indice % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
+            {
+                <div class="col-sm-4">
+                    <img src="@("/image/" + item.imagen)" class="img-fluid float-left" alt="Image About" />
+                </div>
+                <div class="col-sm-8">
+                    <h5 class="lead text-justify">
+                        @item.descripcion
+                        @if (@item.contenido != null)
+                        {
+                            <a data-toggle="collapse" 
+                               href="@("#collapse" + item.id.ToString())" 
+                               role="button" 
+                               aria-expanded="false" 
+                               aria-controls="collapseExample">Leer más...
+                            </a>
+                        }
+                    </h5>
+                </div>
+            }
+            else
+            {
+                <div class="col-sm-8">
+                    <h5 class="lead text-justify">
+                        @item.descripcion
+                        @if (@item.contenido != null)
+                        {
+                            <a data-toggle="collapse" 
+                               href="@("#collapse" + item.id.ToString())" 
+                               role="button" 
+                               aria-expanded="false" 
+                               aria-controls="collapseExample">Leer más...
+                            </a>
+                        }
+                    </h5>
+                </div>
 
+                <div class="col-sm-4">
+                    <img src="@("/image/" + item.imagen)" class="img-fluid float-right" alt="Image About" />
+                </div>
+            }
             <div class="collapse" id="@("collapse" + item.id.ToString())">
                 <p class="text-justify m-4">@item.contenido</p>
             </div>
         </div>
+
+        indice++;
     }
 }

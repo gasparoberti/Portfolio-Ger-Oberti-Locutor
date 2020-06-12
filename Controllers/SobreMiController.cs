@@ -109,7 +109,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,descripcion,contenido,imagen,visible,prioridad")] SobreMi sobreMi)
+        public async Task<IActionResult> Edit(int id, [Bind("id,descripcion,contenido,imagen,visible,prioridad,archivoImagen")] SobreMi sobreMi)
         {
             if (id != sobreMi.id)
             {
@@ -120,6 +120,22 @@ namespace PortfolioCore.Controllers
             {
                 try
                 {
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string path = null;
+
+                    if (sobreMi.archivoImagen != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(sobreMi.archivoImagen.FileName);
+                        string extension = Path.GetExtension(sobreMi.archivoImagen.FileName);
+                        sobreMi.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        path = Path.Combine(wwwRootPath + "/image/", fileName);
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await sobreMi.archivoImagen.CopyToAsync(fileStream);
+                        }
+                    }
+
                     _context.Update(sobreMi);
                     await _context.SaveChangesAsync();
                 }
@@ -163,6 +179,14 @@ namespace PortfolioCore.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var sobreMi = await _context.SobreMi.FindAsync(id);
+
+            //borra imagen de wwwroot/image
+            var sobreMiPath = Path.Combine(_hostEnvironment.WebRootPath, "image", sobreMi.imagen);
+            if (System.IO.File.Exists(sobreMiPath))
+            {
+                System.IO.File.Delete(sobreMiPath);
+            }
+
             _context.SobreMi.Remove(sobreMi);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
