@@ -7,22 +7,22 @@ using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
 {
-    public class RelatosController : Controller
+    public class PodcastsController : Controller
     {
-        private readonly MvcRelatoContext _context;
+        private readonly MvcPodcastContext _context;
 
-        public RelatosController(MvcRelatoContext context)
+        public PodcastsController(MvcPodcastContext context)
         {
             _context = context;
         }
 
-        // GET: Relatos
+        // GET: Podcasts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Relato.ToListAsync());
+            return View(await _context.Podcast.ToListAsync());
         }
 
-        // GET: Relatos/Details/5
+        // GET: Podcasts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,39 +30,39 @@ namespace PortfolioCore.Controllers
                 return NotFound();
             }
 
-            var relato = await _context.Relato
+            var podcast = await _context.Podcast
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (relato == null)
+            if (podcast == null)
             {
                 return NotFound();
             }
 
-            return View(relato);
+            return View(podcast);
         }
 
-        // GET: Relatos/Create
+        // GET: Podcasts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Relatos/Create
+        // POST: Podcasts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,url,titulo,descripcion,contenido,visible,prioridad,fecha_alta")] Relato relato)
+        public async Task<IActionResult> Create([Bind("id,url,titulo,descripcion,contenido,visible,prioridad,fecha_alta")] Podcast podcast)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(relato);
+                _context.Add(podcast);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(relato);
+            return View(podcast);
         }
 
-        // GET: Relatos/Edit/5
+        // GET: Podcasts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -70,22 +70,22 @@ namespace PortfolioCore.Controllers
                 return NotFound();
             }
 
-            var relato = await _context.Relato.FindAsync(id);
-            if (relato == null)
+            var podcast = await _context.Podcast.FindAsync(id);
+            if (podcast == null)
             {
                 return NotFound();
             }
-            return View(relato);
+            return View(podcast);
         }
 
-        // POST: Relatos/Edit/5
+        // POST: Podcasts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,url,titulo,descripcion,contenido,visible,prioridad,fecha_alta")] Relato relato)
+        public async Task<IActionResult> Edit(int id, [Bind("id,url,titulo,descripcion,contenido,visible,prioridad,fecha_alta")] Podcast podcast)
         {
-            if (id != relato.id)
+            if (id != podcast.id)
             {
                 return NotFound();
             }
@@ -94,12 +94,12 @@ namespace PortfolioCore.Controllers
             {
                 try
                 {
-                    _context.Update(relato);
+                    _context.Update(podcast);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RelatoExists(relato.id))
+                    if (!PodcastExists(podcast.id))
                     {
                         return NotFound();
                     }
@@ -110,10 +110,10 @@ namespace PortfolioCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(relato);
+            return View(podcast);
         }
 
-        // GET: Relatos/Delete/5
+        // GET: Podcasts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -121,30 +121,30 @@ namespace PortfolioCore.Controllers
                 return NotFound();
             }
 
-            var relato = await _context.Relato
+            var podcast = await _context.Podcast
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (relato == null)
+            if (podcast == null)
             {
                 return NotFound();
             }
 
-            return View(relato);
+            return View(podcast);
         }
 
-        // POST: Relatos/Delete/5
+        // POST: Podcasts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var relato = await _context.Relato.FindAsync(id);
-            _context.Relato.Remove(relato);
+            var podcast = await _context.Podcast.FindAsync(id);
+            _context.Podcast.Remove(podcast);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RelatoExists(int id)
+        private bool PodcastExists(int id)
         {
-            return _context.Relato.Any(e => e.id == id);
+            return _context.Podcast.Any(e => e.id == id);
         }
     }
 }

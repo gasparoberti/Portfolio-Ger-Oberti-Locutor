@@ -1,7 +1,7 @@
-﻿@model PortfolioCore.Models.Relato
+﻿@model PortfolioCore.Models.Podcast
 
 @{
-    ViewData["Title"] = "DetalleRelato";
+    ViewData["Title"] = "DetallePodcast";
 }
 
     <div class="text-center">
@@ -11,8 +11,8 @@
             <h5>@Model.descripcion</h5>
         </div>
 
-        <div class="embed-responsive embed-responsive-16by9 m-4">
-            <iframe class="embed-responsive-item" src="@Model.url" allowfullscreen></iframe>
+        <div class="m-4">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="@Model.url"></iframe>
         </div>
 
         <p>@Model.contenido</p>

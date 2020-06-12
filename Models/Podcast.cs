@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PortfolioCore.Models
 {
-    public class Relato
+    public class Podcast
     {
         public int id { get; set; }
 

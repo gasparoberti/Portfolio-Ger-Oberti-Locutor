@@ -20,13 +20,15 @@ namespace PortfolioCore.Controllers
         private readonly MvcRelatoContext _contextRelato;
         private readonly MvcTipContext _contextTip;
         private readonly MvcSobreMiContext _contextSobreMi;
+        private readonly MvcPodcastContext _contextPodcast;
         private readonly IWebHostEnvironment _hostEnvironment;
 
         public HomeController(ILogger<HomeController> logger, 
             MvcNoticiaContext context, 
             MvcRelatoContext contextRelato,
             MvcTipContext contextTip, 
-            MvcSobreMiContext contextSobreMi, 
+            MvcSobreMiContext contextSobreMi,
+            MvcPodcastContext contextPodcast, 
             IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
@@ -34,6 +36,7 @@ namespace PortfolioCore.Controllers
             _contextRelato = contextRelato;
             _contextTip = contextTip;
             _contextSobreMi = contextSobreMi;
+            _contextPodcast = contextPodcast;
             this._hostEnvironment = hostEnvironment;
         }
 
@@ -55,6 +58,11 @@ namespace PortfolioCore.Controllers
         public async Task<IActionResult> SobreMi()
         {
             return View(await _contextSobreMi.SobreMi.ToListAsync());
+        }
+        
+        public async Task<IActionResult> Podcasts()
+        {
+            return View(await _contextPodcast.Podcast.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -115,6 +123,24 @@ namespace PortfolioCore.Controllers
             }
 
             return View(relato);
+        }
+        
+        // GET: Relatos/Detalles/5
+        public async Task<IActionResult> DetallePodcast(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var podcast = await _contextPodcast.Podcast
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (podcast == null)
+            {
+                return NotFound();
+            }
+
+            return View(podcast);
         }
     }
 }
