@@ -42,6 +42,12 @@ namespace PortfolioCore.Controllers
 
         public async Task<IActionResult> Index()
         {
+            //var tips = from t in _contextTip.Tip
+            //               select t;
+
+            //ViewBag.tip1 = tips.FirstOrDefault(tip => tip.id > 2);
+            //ViewBag.tip1 = tips;
+
             return View(await _context.Noticia.ToListAsync());
         }
 

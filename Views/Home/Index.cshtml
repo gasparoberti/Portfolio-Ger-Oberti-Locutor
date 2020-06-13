@@ -17,7 +17,11 @@
 </div>
 
 
-@*@{ List<Noticia> noticia1 = }*@
+    @*@foreach (var i in ViewBag.tip1)
+    {
+        <p>@i.id</p>
+    }*@
+
 
 <div class="card-columns">
     @foreach (var item in Model.OrderBy(i => i.fecha_alta))
