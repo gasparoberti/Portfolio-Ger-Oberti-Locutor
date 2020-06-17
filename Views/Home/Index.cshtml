@@ -24,7 +24,7 @@
 
 
 <div class="card-columns">
-    @foreach (var item in Model.OrderBy(i => i.fecha_alta))
+    @foreach (var item in Model.OrderByDescending(i => i.fecha_alta))
     {
         @if (@item.visible == true)
         {
@@ -39,5 +39,103 @@
             </div>
         }
     }
+</div>
+
+
+<div class="text-center m-5">
+    <h3>Últimas publicaciones...</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card">
+            <img class="card-img-top" src="~/image/yt_1366_2000.jpg" alt="Card image" style="object-fit: cover">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.relato.titulo</h5>
+                @*<p class="card-text">@item.descripcion</p>*@
+                <p class="card-text"><small class="text-muted">#Relatos</small></p>
+                <div class="text-center">
+                    <a asp-route-id="@ViewBag.relato.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light btn-block">Ver...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card">
+            <img class="card-img-top" src="~/image/marcas_en_soundcloud_-_publicidad.jpg" alt="Card image" style="object-fit: cover">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.podcast.titulo</h5>
+                @*<p class="card-text">@item.descripcion</p>*@
+                <p class="card-text"><small class="text-muted">#Podcasts</small></p>
+                <div class="text-center">
+                    <a asp-route-id="@ViewBag.podcast.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card">
+            <img class="card-img-top" src="@("/image/" + ViewBag.tip.imagen)" alt="Card image" style="object-fit: cover">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.tip.titulo</h5>
+                @*<p class="card-text">@item.descripcion</p>*@
+                <p class="card-text"><small class="text-muted">#Tips</small></p>
+                <div class="text-center">
+                    <a asp-route-id="@ViewBag.tip.id" asp-action="DetalleTip" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="text-center m-5">
+    <h3>Mis favoritas...</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card">
+            <img class="card-img-top" src="~/image/yt_1366_2000.jpg" alt="Card image" style="object-fit: cover">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.relatoFav.titulo</h5>
+                @*<p class="card-text">@item.descripcion</p>*@
+                <p class="card-text"><small class="text-muted">#Relatos</small></p>
+                <div class="text-center">
+                    <a asp-route-id="@ViewBag.relatoFav.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light btn-block">Ver...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card">
+            <img class="card-img-top" src="~/image/marcas_en_soundcloud_-_publicidad.jpg" alt="Card image" style="object-fit: cover">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.podcastFab.titulo</h5>
+                @*<p class="card-text">@item.descripcion</p>*@
+                <p class="card-text"><small class="text-muted">#Podcasts</small></p>
+                <div class="text-center">
+                    <a asp-route-id="@ViewBag.podcastFab.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card">
+            <img class="card-img-top" src="@("/image/" + ViewBag.tipFab.imagen)" alt="Card image" style="object-fit: cover">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.tipFab.titulo</h5>
+                @*<p class="card-text">@item.descripcion</p>*@
+                <p class="card-text"><small class="text-muted">#Tips</small></p>
+                <div class="text-center">
+                    <a asp-route-id="@ViewBag.tipFab.id" asp-action="DetalleTip" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 

@@ -56,7 +56,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,titulo,descripcion,contenido,archivoImagen,visible,fecha_alta")] Tip tip)
+        public async Task<IActionResult> Create([Bind("id,titulo,descripcion,contenido,archivoImagen,visible,prioridad,fecha_alta")] Tip tip)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,imagen,visible,fecha_alta,archivoImagen")] Tip tip)
+        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,imagen,visible,prioridad,fecha_alta,archivoImagen")] Tip tip)
         {
             if (id != tip.id)
             {

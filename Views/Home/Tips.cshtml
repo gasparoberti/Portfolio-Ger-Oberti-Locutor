@@ -9,7 +9,7 @@
 </div>
 
 <div class="card-deck">
-    @foreach (var item in Model.OrderBy(i => i.fecha_alta))
+    @foreach (var item in Model.OrderByDescending(i => i.fecha_alta))
     {
         @if (@item.visible == true)
         {

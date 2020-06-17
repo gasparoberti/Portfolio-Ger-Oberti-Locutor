@@ -9,13 +9,13 @@
     </div>
 
     <div class="card-deck">
-        @foreach (var item in Model.OrderBy(i => i.fecha_alta))
+        @foreach (var item in Model.OrderByDescending(i => i.fecha_alta))
         {
             @if (@item.visible == true)
             {
                 <div class="col-md-3 col-sm-6 mb-3">
                     <div class="card">
-                        <img class="card-img-top" src="~/image/auriculares-1855337.jpg" alt="Card image" style="object-fit: cover">
+                        <img class="card-img-top" src="~/image/marcas_en_soundcloud_-_publicidad.jpg" alt="Card image" style="object-fit: cover">
                         <div class="card-body">
                             <h5 class="card-title">@item.titulo</h5>
                             @*<p class="card-text">@item.descripcion</p>*@

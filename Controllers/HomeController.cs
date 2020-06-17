@@ -42,11 +42,27 @@ namespace PortfolioCore.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var tips = from t in _contextTip.Tip
-            //               select t;
+            //últimas publicaciones
+            var relato = (from r in _contextRelato.Relato orderby r.fecha_alta descending select r).First();
+            ViewBag.relato = relato;
 
-            //ViewBag.tip1 = tips.FirstOrDefault(tip => tip.id > 2);
-            //ViewBag.tip1 = tips;
+            var podcast = (from p in _contextPodcast.Podcast orderby p.fecha_alta descending select p).First();
+            ViewBag.podcast = podcast;
+
+            var tip = (from t in _contextTip.Tip orderby t.fecha_alta descending select t).First();
+            ViewBag.tip = tip;
+
+
+            //publicaciones favoritas
+            var relatoFav = (from r in _contextRelato.Relato orderby r.prioridad select r).First();
+            ViewBag.relatoFav = relatoFav;
+
+            var podcastFab = (from p in _contextPodcast.Podcast orderby p.prioridad select p).First();
+            ViewBag.podcastFab = podcastFab;
+
+            var tipFab = (from t in _contextTip.Tip orderby t.prioridad select t).First();
+            ViewBag.tipFab = tipFab;
+
 
             return View(await _context.Noticia.ToListAsync());
         }

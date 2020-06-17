@@ -31,6 +31,10 @@ namespace PortfolioCore.Models
         public bool visible { get; set; }
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]
+        [Display(Name = "Prioridad (máxima: 1)")]
+        public int prioridad { get; set; }
+
+        [Required(ErrorMessage = "{0} es un campo requerido.")]
         [Display(Name = "Fecha Alta")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

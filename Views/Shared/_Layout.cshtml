@@ -37,9 +37,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SobreMi">Sobre mí</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Contacto</a>
-                        </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item dropdown">
@@ -49,7 +46,6 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Home</a>
                                     <a class="dropdown-item" asp-controller="SobreMi" asp-action="Index">Sobre Mí</a>
-                                    <a class="dropdown-item" href="#">Contacto</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" asp-area="" asp-controller="Noticias" asp-action="Index">Noticias</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Relatos" asp-action="Index">Relatos</a>
@@ -70,7 +66,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="border-top text-muted pt-3">
+    <footer id="footer" class="border-top text-muted pt-3">
 
         <div class="container">
 
@@ -98,11 +94,33 @@
                     </li>
                 </ul>
             }
+
+        <div class="row">
+            <div class="col-sm-6">
+                <address>
+                    One Microsoft Way<br />
+                    Redmond, WA 98052-6399<br />
+                    425.555.0100
+                </address>
+
+                <address>
+                    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+                    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+                </address>
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+            
+
+            <div class="footer-copyright text-center">
+                <p>&copy; @DateTime.Now.Year - <a href="">geo</a></p>
+            </div>
+
         </div>
 
-        <div class="footer-copyright text-center">
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </div>
+       
 
     </footer>
 
