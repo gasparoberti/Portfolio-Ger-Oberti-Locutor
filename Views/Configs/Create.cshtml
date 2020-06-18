@@ -1,0 +1,75 @@
+﻿@model PortfolioCore.Models.Config
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Config</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="imagen1Home" class="control-label"></label>
+                <input asp-for="imagen1Home" class="form-control" />
+                <span asp-validation-for="imagen1Home" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagen2Home" class="control-label"></label>
+                <input asp-for="imagen2Home" class="form-control" />
+                <span asp-validation-for="imagen2Home" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagen3Home" class="control-label"></label>
+                <input asp-for="imagen3Home" class="form-control" />
+                <span asp-validation-for="imagen3Home" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagenRelatos" class="control-label"></label>
+                <input asp-for="imagenRelatos" class="form-control" />
+                <span asp-validation-for="imagenRelatos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagenCardRelatos" class="control-label"></label>
+                <input asp-for="imagenCardRelatos" class="form-control" />
+                <span asp-validation-for="imagenCardRelatos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagenPodcasts" class="control-label"></label>
+                <input asp-for="imagenPodcasts" class="form-control" />
+                <span asp-validation-for="imagenPodcasts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagenCardPodcasts" class="control-label"></label>
+                <input asp-for="imagenCardPodcasts" class="form-control" />
+                <span asp-validation-for="imagenCardPodcasts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagenTips" class="control-label"></label>
+                <input asp-for="imagenTips" class="form-control" />
+                <span asp-validation-for="imagenTips" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imagenSobreMi" class="control-label"></label>
+                <input asp-for="imagenSobreMi" class="form-control" />
+                <span asp-validation-for="imagenSobreMi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fecha_alta" class="control-label"></label>
+                <input asp-for="fecha_alta" class="form-control" />
+                <span asp-validation-for="fecha_alta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

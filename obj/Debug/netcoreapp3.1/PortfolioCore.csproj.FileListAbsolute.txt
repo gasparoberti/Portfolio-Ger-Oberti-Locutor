@@ -210,4 +210,8 @@ D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Pod
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Podcasts\Index.cshtml.g.cs
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Podcasts.cshtml.g.cs
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\DetallePodcast.cshtml.g.cs
-D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\PortfolioCore.csprojAssemblyReference.cache
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Configs\Create.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Configs\Delete.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Configs\Details.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Configs\Edit.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Configs\Index.cshtml.g.cs

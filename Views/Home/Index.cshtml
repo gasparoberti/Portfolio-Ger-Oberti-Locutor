@@ -4,23 +4,32 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="card bg-dark text-white mb-3">
-    @*modificar para qe lo obtenga dinamicamente*@
+@*<div class="card bg-dark text-white mb-3">
     <img class="img-fluid" src="@("~/image/lacumbrecita1.jpg")" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
     <div class="card-img-overlay">
         <h5 class="card-title"></h5>
+    </div>
+</div>*@
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="~/image/slide1.png" alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/image/slide2.png" alt="Second slide">
+
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/image/slide3.png" alt="Third slide">
+
+        </div>
     </div>
 </div>
 
 <div class="text-center mb-5">
     <h1 class="display-4">Noticias</h1>
 </div>
-
-
-    @*@foreach (var i in ViewBag.tip1)
-    {
-        <p>@i.id</p>
-    }*@
 
 
 <div class="card-columns">
@@ -43,7 +52,7 @@
 
 
 <div class="text-center m-5">
-    <h3>Últimas publicaciones...</h3>
+    <h3>También te puede interesar...</h3>
 </div>
 
 <div class="row">
@@ -92,7 +101,7 @@
 
 
 <div class="text-center m-5">
-    <h3>Mis favoritas...</h3>
+    <h3>Mis publicaciones favoritas...</h3>
 </div>
 
 <div class="row">

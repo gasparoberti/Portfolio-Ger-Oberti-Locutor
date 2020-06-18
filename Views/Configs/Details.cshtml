@@ -1,0 +1,78 @@
+﻿@model PortfolioCore.Models.Config
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Config</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagen1Home)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagen1Home)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagen2Home)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagen2Home)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagen3Home)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagen3Home)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagenRelatos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagenRelatos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagenCardRelatos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagenCardRelatos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagenPodcasts)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagenPodcasts)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagenCardPodcasts)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagenCardPodcasts)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagenTips)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagenTips)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.imagenSobreMi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.imagenSobreMi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.fecha_alta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.fecha_alta)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
