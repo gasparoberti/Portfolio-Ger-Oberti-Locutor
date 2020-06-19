@@ -21,6 +21,7 @@ namespace PortfolioCore.Controllers
         private readonly MvcTipContext _contextTip;
         private readonly MvcSobreMiContext _contextSobreMi;
         private readonly MvcPodcastContext _contextPodcast;
+        private readonly MvcConfigContext _contextConfig;
         private readonly IWebHostEnvironment _hostEnvironment;
 
         public HomeController(ILogger<HomeController> logger, 
@@ -28,7 +29,8 @@ namespace PortfolioCore.Controllers
             MvcRelatoContext contextRelato,
             MvcTipContext contextTip, 
             MvcSobreMiContext contextSobreMi,
-            MvcPodcastContext contextPodcast, 
+            MvcPodcastContext contextPodcast,
+            MvcConfigContext contextConfig, 
             IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
@@ -37,11 +39,17 @@ namespace PortfolioCore.Controllers
             _contextTip = contextTip;
             _contextSobreMi = contextSobreMi;
             _contextPodcast = contextPodcast;
+            _contextConfig = contextConfig;
             this._hostEnvironment = hostEnvironment;
         }
 
         public async Task<IActionResult> Index()
         {
+            //config
+            var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
+            ViewBag.config = config;
+
+
             //últimas publicaciones
             var relato = (from r in _contextRelato.Relato orderby r.fecha_alta descending select r).First();
             ViewBag.relato = relato;

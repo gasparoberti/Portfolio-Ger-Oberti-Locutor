@@ -1,46 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PortfolioCore.Data;
 using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class ConfigsController : Controller
     {
         private readonly MvcConfigContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ConfigsController(MvcConfigContext context)
+        public ConfigsController(MvcConfigContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
-        // GET: Configs
+        // GET: Noticias
         public async Task<IActionResult> Index()
         {
             return View(await _context.Config.ToListAsync());
-        }
-
-        // GET: Configs/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var config = await _context.Config
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (config == null)
-            {
-                return NotFound();
-            }
-
-            return View(config);
         }
 
         // GET: Configs/Create
@@ -54,14 +39,37 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,imagen1Home,imagen2Home,imagen3Home,imagenRelatos,imagenCardRelatos,imagenPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
+        //public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImage3Home,archivoImagenRelatos,archivoImagenCardRelatos,archivoImagenPodcasts,archivoImagenCardPodcasts,archivoImagenTips,archivoImagenSobreMi,fecha_alta")] Config config)
+        public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,imagen2Home,imagen3Home,imagenRelatos,imagenCardRelatos,imagenPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
         {
-            if (ModelState.IsValid)
+            if (config.archivoImagen1Home == null 
+                //|| config.archivoImagenCardRelatos == null 
+                //|| config.archivoImagenCardPodcasts == null
+                )
             {
+                ModelState.AddModelError("archivoImagen1Home", "Imagen es un campo requerido.");
+                //ModelState.AddModelError("archivoImagenCardRelatos", "Imagen es un campo requerido.");
+                //ModelState.AddModelError("archivoImagenCardPodcasts", "Imagen es un campo requerido.");
+            }
+            else
+            {
+                //guarda la imagen en wwwroot/image
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = "archivoImagen1Home";
+                string extension = Path.GetExtension(config.archivoImagen1Home.FileName);
+                config.imagen1Home = fileName += extension;
+                string path = Path.Combine(wwwRootPath + "/image/", fileName);
+
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await config.archivoImagen1Home.CopyToAsync(fileStream);
+                }
+
                 _context.Add(config);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(config);
         }
 
@@ -86,7 +94,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,imagen2Home,imagen3Home,imagenRelatos,imagenCardRelatos,imagenPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
+        public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,archivoImagen1Home,imagen2Home,imagen3Home,imagenRelatos,imagenCardRelatos,imagenPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
         {
             if (id != config.id)
             {
@@ -97,6 +105,22 @@ namespace PortfolioCore.Controllers
             {
                 try
                 {
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string path = null;
+
+                    if (config.archivoImagen1Home != null)
+                    {
+                        string fileName = "archivoImagen1Home";
+                        string extension = Path.GetExtension(config.archivoImagen1Home.FileName);
+                        config.imagen1Home = fileName += extension;
+                        path = Path.Combine(wwwRootPath + "/image/", fileName);
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await config.archivoImagen1Home.CopyToAsync(fileStream);
+                        }
+                    }
+
                     _context.Update(config);
                     await _context.SaveChangesAsync();
                 }
@@ -114,35 +138,6 @@ namespace PortfolioCore.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(config);
-        }
-
-        // GET: Configs/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var config = await _context.Config
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (config == null)
-            {
-                return NotFound();
-            }
-
-            return View(config);
-        }
-
-        // POST: Configs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var config = await _context.Config.FindAsync(id);
-            _context.Config.Remove(config);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool ConfigExists(int id)

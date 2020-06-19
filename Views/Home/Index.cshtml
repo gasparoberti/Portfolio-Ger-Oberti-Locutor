@@ -4,28 +4,29 @@
     ViewData["Title"] = "Home Page";
 }
 
-@*<div class="card bg-dark text-white mb-3">
-    <img class="img-fluid" src="@("~/image/lacumbrecita1.jpg")" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
-    <div class="card-img-overlay">
-        <h5 class="card-title"></h5>
+@if (ViewBag.config != null)
+{
+    <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagen1Home)" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
+}
+else
+{
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="~/image/slide1.png" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/image/slide2.png" alt="Second slide">
+
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/image/slide3.png" alt="Third slide">
+
+            </div>
+        </div>
     </div>
-</div>*@
+}
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="~/image/slide1.png" alt="First slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="~/image/slide2.png" alt="Second slide">
-
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="~/image/slide3.png" alt="Third slide">
-
-        </div>
-    </div>
-</div>
 
 <div class="text-center mb-5">
     <h1 class="display-4">Noticias</h1>
@@ -69,7 +70,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-4 col-sm-6 mb-3">
         <div class="card">
             <img class="card-img-top" src="~/image/marcas_en_soundcloud_-_publicidad.jpg" alt="Card image" style="object-fit: cover">
@@ -83,7 +84,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-4 col-sm-6 mb-3">
         <div class="card">
             <img class="card-img-top" src="@("/image/" + ViewBag.tip.imagen)" alt="Card image" style="object-fit: cover">

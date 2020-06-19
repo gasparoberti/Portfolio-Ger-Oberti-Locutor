@@ -1,89 +1,41 @@
 ﻿@model IEnumerable<PortfolioCore.Models.Config>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Index</h1>
+@if (Model.Count() == 0)
+{
+    <h1>Configuración</h1>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+else
+{
+    <h1 class="mb-5">Configuración</h1>
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.imagen1Home)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagen2Home)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagen3Home)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagenRelatos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagenCardRelatos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagenPodcasts)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagenCardPodcasts)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagenTips)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagenSobreMi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fecha_alta)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagen1Home)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagen2Home)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagen3Home)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagenRelatos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagenCardRelatos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagenPodcasts)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagenCardPodcasts)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagenTips)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagenSobreMi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_alta)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.imagen1Home)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
