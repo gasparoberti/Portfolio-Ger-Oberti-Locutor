@@ -86,6 +86,10 @@ namespace PortfolioCore.Controllers
         
         public async Task<IActionResult> Tips()
         {
+            //config
+            var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
+            ViewBag.config = config;
+
             return View(await _contextTip.Tip.ToListAsync());
         }
 

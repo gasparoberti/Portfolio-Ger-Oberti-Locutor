@@ -4,6 +4,14 @@
     ViewData["Title"] = "Tips";
 }
 
+@if (ViewBag.config != null
+  && ViewBag.config.imagenTips != null
+  && ViewBag.config.visibleT == true
+  )
+{
+    <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagenTips)" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
+}
+
 <div class="text-center mb-5">
     <h1 class="display-4">Tips</h1>
 </div>
