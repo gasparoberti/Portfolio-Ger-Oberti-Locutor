@@ -9,35 +9,35 @@ namespace PortfolioCore.Models
     {
         public int id { get; set; }
 
-        [Display(Name = "Imagen 1 Home")]
+        [Display(Name = "Imagen 1 Portada Home")]
         public string imagen1Home { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen 1 Home")]
+        [Display(Name = "Imagen 1 Portada Home *")]
         public IFormFile archivoImagen1Home { get; set; }
         
         
-        [Display(Name = "Imagen 2 Home")]
+        [Display(Name = "Imagen 2 Portada Home")]
         public string imagen2Home { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen 2 Home")]
+        [Display(Name = "Imagen 2 Portada Home")]
         public IFormFile archivoImagen2Home { get; set; }
         
         
-        [Display(Name = "Imagen 3 Home")]
+        [Display(Name = "Imagen 3 Portada Home")]
         public string imagen3Home { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen 3 Home")]
-        public IFormFile archivoImage3Home { get; set; }
+        [Display(Name = "Imagen 3 Portada Home")]
+        public IFormFile archivoImagen3Home { get; set; }
         
         
-        [Display(Name = "Imagen Relatos")]
+        [Display(Name = "Imagen Portada Relatos")]
         public string imagenRelatos { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen Relatos")]
+        [Display(Name = "Imagen Portada Relatos")]
         public IFormFile archivoImagenRelatos { get; set; }
         
         
@@ -45,15 +45,15 @@ namespace PortfolioCore.Models
         public string imagenCardRelatos { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen Card Relatos")]
+        [Display(Name = "Imagen Card Relatos *")]
         public IFormFile archivoImagenCardRelatos { get; set; }
         
         
-        [Display(Name = "Imagen Podcasts")]
+        [Display(Name = "Imagen Portada Podcasts")]
         public string imagenPodcasts { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen Podcasts")]
+        [Display(Name = "Imagen Portada Podcasts")]
         public IFormFile archivoImagenPodcasts { get; set; }
 
 
@@ -61,28 +61,28 @@ namespace PortfolioCore.Models
         public string imagenCardPodcasts { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen Card Podcasts")]
+        [Display(Name = "Imagen Card Podcasts *")]
         public IFormFile archivoImagenCardPodcasts { get; set; }
 
 
-        [Display(Name = "Imagen Tips")]
+        [Display(Name = "Imagen Portada Tips")]
         public string imagenTips { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen Tips")]
+        [Display(Name = "Imagen Portada Tips")]
         public IFormFile archivoImagenTips { get; set; }
 
 
-        [Display(Name = "Imagen Sorbre Mí")]
+        [Display(Name = "Imagen Portada Sorbre Mí")]
         public string imagenSobreMi { get; set; }
 
         [NotMapped]
-        [Display(Name = "Imagen Sorbre Mí")]
+        [Display(Name = "Imagen Portada Sorbre Mí")]
         public IFormFile archivoImagenSobreMi { get; set; }
 
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]
-        [Display(Name = "Fecha Alta")]
+        [Display(Name = "Fecha Alta *")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime fecha_alta { get; set; }
