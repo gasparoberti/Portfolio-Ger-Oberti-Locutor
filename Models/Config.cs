@@ -62,8 +62,11 @@ namespace PortfolioCore.Models
 
         [NotMapped]
         [Display(Name = "Imagen Portada Relatos")]
-        public IFormFile archivoImagenRelatos { get; set; }        
-        
+        public IFormFile archivoImagenRelatos { get; set; }
+
+        [Display(Name = "Visible")]
+        public bool visibleR { get; set; }
+
 
         [Display(Name = "Imagen Portada Podcasts")]
         public string imagenPodcasts { get; set; }

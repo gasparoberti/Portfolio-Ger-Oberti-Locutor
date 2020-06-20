@@ -40,7 +40,7 @@ namespace PortfolioCore.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImage3Home,archivoImagenRelatos,archivoImagenCardRelatos,archivoImagenPodcasts,archivoImagenCardPodcasts,archivoImagenTips,archivoImagenSobreMi,fecha_alta")] Config config)
-        public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImagen3Home,archivoImagenRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
+        public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImagen3Home,archivoImagenRelatos,visibleR,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
         {
             if (config.archivoImagen1Home == null 
                 || config.archivoImagenCardRelatos == null 
@@ -182,7 +182,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,archivoImagen1Home,imagen2Home,archivoImagen2Home,imagen3Home,archivoImagen3Home,imagenRelatos,archivoImagenRelatos,imagenCardRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
+        public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,archivoImagen1Home,imagen2Home,archivoImagen2Home,imagen3Home,archivoImagen3Home,imagenRelatos,archivoImagenRelatos,visibleR,imagenCardRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
         {
             if (id != config.id)
             {

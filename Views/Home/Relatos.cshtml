@@ -4,7 +4,10 @@
     ViewData["Title"] = "View";
 }
 
-@if (ViewBag.config != null && ViewBag.config.imagenRelatos != null)
+@if (ViewBag.config != null 
+    && ViewBag.config.imagenRelatos != null
+    && ViewBag.config.visibleR == true
+    )
 {
     <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagenRelatos)" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
 }

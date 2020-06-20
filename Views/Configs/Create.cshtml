@@ -54,6 +54,11 @@
                 <input asp-for="archivoImagenRelatos" accept="image/*" />
                 <span asp-validation-for="archivoImagenRelatos" class="text-danger"></span>
             </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visibleR" /> @Html.DisplayNameFor(model => model.visibleR)
+                </label>
+            </div>
             <div class="form-group">
                 <label asp-for="imagenPodcasts" class="control-label"></label>
                 <input asp-for="imagenPodcasts" class="form-control" />
