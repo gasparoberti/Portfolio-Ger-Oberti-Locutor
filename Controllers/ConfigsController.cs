@@ -40,25 +40,37 @@ namespace PortfolioCore.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImage3Home,archivoImagenRelatos,archivoImagenCardRelatos,archivoImagenPodcasts,archivoImagenCardPodcasts,archivoImagenTips,archivoImagenSobreMi,fecha_alta")] Config config)
-        public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImagen3Home,imagenRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
+        public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImagen3Home,archivoImagenRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
         {
             if (config.archivoImagen1Home == null 
-                //|| config.archivoImagenCardRelatos == null 
-                //|| config.archivoImagenCardPodcasts == null
+                || config.archivoImagenCardRelatos == null 
+                || config.archivoImagenCardPodcasts == null
                 )
             {
-                if((config.archivoImagen1Home == null && config.archivoImagen2Home != null)
-                    || (config.archivoImagen1Home == null && config.archivoImagen3Home != null)
-                    || (config.archivoImagen1Home == null && config.archivoImagen2Home != null && config.archivoImagen3Home != null)
-                    ) 
+                if (config.archivoImagen1Home == null)
                 {
-                    ModelState.AddModelError("archivoImagen1Home", "Imagen es un campo requerido.");
+                    ModelState.AddModelError("archivoImagen1Home", "Imagen 1 es un campo requerido.");
+                }
+                
+                if (config.archivoImagenCardRelatos == null)
+                {
+                    ModelState.AddModelError("archivoImagenCardRelatos", "Imagen Card Relatos es un campo requerido.");
+                }
+                
+                if (config.archivoImagenCardPodcasts == null)
+                {
+                    ModelState.AddModelError("archivoImagenCardPodcasts", "Imagen Card Podcasts es un campo requerido.");
+                }
+
+                if ((config.archivoImagen1Home == null && config.archivoImagen2Home != null)
+                || (config.archivoImagen1Home == null && config.archivoImagen3Home != null)
+                || (config.archivoImagen1Home == null && config.archivoImagen2Home != null && config.archivoImagen3Home != null)
+                ) 
+                {
+                    ModelState.AddModelError("archivoImagen1Home", "Campo requerido.");
                     ModelState.AddModelError("archivoImagen2Home", "No se puede cargar esta imagen sin cargar la primera.");
                     ModelState.AddModelError("archivoImagen3Home", "No se puede cargar esta imagen sin cargar la primera.");
                 }
-                
-                //ModelState.AddModelError("archivoImagenCardRelatos", "Imagen es un campo requerido.");
-                //ModelState.AddModelError("archivoImagenCardPodcasts", "Imagen es un campo requerido.");
             }
             else
             {
@@ -126,6 +138,19 @@ namespace PortfolioCore.Controllers
                         await config.archivoImagenCardPodcasts.CopyToAsync(fileStream);
                     }
                 }
+                
+                if (config.archivoImagenRelatos != null)
+                {
+                    string fileNameR = "archivoImagenRelatos";
+                    string extensionR = Path.GetExtension(config.archivoImagenRelatos.FileName);
+                    config.imagenRelatos = fileNameR += extensionR;
+                    string pathR = Path.Combine(wwwRootPath + "/image/", fileNameR);
+
+                    using (var fileStream = new FileStream(pathR, FileMode.Create))
+                    {
+                        await config.archivoImagenRelatos.CopyToAsync(fileStream);
+                    }
+                }
 
 
                 _context.Add(config);
@@ -157,7 +182,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,archivoImagen1Home,imagen2Home,archivoImagen2Home,imagen3Home,archivoImagen3Home,imagenRelatos,imagenCardRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
+        public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,archivoImagen1Home,imagen2Home,archivoImagen2Home,imagen3Home,archivoImagen3Home,imagenRelatos,archivoImagenRelatos,imagenCardRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
         {
             if (id != config.id)
             {
@@ -169,7 +194,7 @@ namespace PortfolioCore.Controllers
                 try
                 {
                     string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string path, path2, path3, pathCR, pathCP = null;
+                    string path, path2, path3, pathCR, pathCP, pathR = null;
 
                     if (config.archivoImagen1Home != null)
                     {
@@ -233,6 +258,19 @@ namespace PortfolioCore.Controllers
                         using (var fileStream = new FileStream(pathCP, FileMode.Create))
                         {
                             await config.archivoImagenCardPodcasts.CopyToAsync(fileStream);
+                        }
+                    }
+                    
+                    if (config.archivoImagenRelatos != null)
+                    {
+                        string fileNameR = "archivoImagenRelatos";
+                        string extensionR = Path.GetExtension(config.archivoImagenRelatos.FileName);
+                        config.imagenRelatos = fileNameR += extensionR;
+                        pathR = Path.Combine(wwwRootPath + "/image/", fileNameR);
+
+                        using (var fileStream = new FileStream(pathR, FileMode.Create))
+                        {
+                            await config.archivoImagenRelatos.CopyToAsync(fileStream);
                         }
                     }
 

@@ -7,16 +7,37 @@
 <h1>Create</h1>
 
 <h4>Config</h4>
+<p>
+    <small>
+        Los campos con * son obligatorios.<br>
+        En caso de que olvide cargar alguna imagen obligatoria la validación requerirá volver a cargar TODAS las imágenes.<br>
+        Las imágenes para la portada deben tener el mismo tamaño.<br>
+    </small>
+</p>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <p><small>Las imágenes para la portada deben tener el mismo tamaño.</small></p>
             <div class="form-group">
                 <label asp-for="archivoImagen1Home" class="control-label"></label>
                 <input asp-for="archivoImagen1Home" accept="image/*" />
                 <span asp-validation-for="archivoImagen1Home" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="archivoImagenCardRelatos" class="control-label"></label>
+                <input asp-for="archivoImagenCardRelatos" accept="image/*" />
+                <span asp-validation-for="archivoImagenCardRelatos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="archivoImagenCardPodcasts" class="control-label"></label>
+                <input asp-for="archivoImagenCardPodcasts" accept="image/*" />
+                <span asp-validation-for="archivoImagenCardPodcasts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fecha_alta" class="control-label"></label>
+                <input asp-for="fecha_alta" class="form-control" />
+                <span asp-validation-for="fecha_alta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="archivoImagen2Home" class="control-label"></label>
@@ -29,24 +50,14 @@
                 <span asp-validation-for="archivoImagen3Home" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="imagenRelatos" class="control-label"></label>
-                <input asp-for="imagenRelatos" class="form-control" />
-                <span asp-validation-for="imagenRelatos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="archivoImagenCardRelatos" class="control-label"></label>
-                <input asp-for="archivoImagenCardRelatos" accept="image/*" />
-                <span asp-validation-for="archivoImagenCardRelatos" class="text-danger"></span>
+                <label asp-for="archivoImagenRelatos" class="control-label"></label>
+                <input asp-for="archivoImagenRelatos" accept="image/*" />
+                <span asp-validation-for="archivoImagenRelatos" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="imagenPodcasts" class="control-label"></label>
                 <input asp-for="imagenPodcasts" class="form-control" />
                 <span asp-validation-for="imagenPodcasts" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="archivoImagenCardPodcasts" class="control-label"></label>
-                <input asp-for="archivoImagenCardPodcasts" accept="image/*" />
-                <span asp-validation-for="archivoImagenCardPodcasts" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="imagenTips" class="control-label"></label>
@@ -57,11 +68,6 @@
                 <label asp-for="imagenSobreMi" class="control-label"></label>
                 <input asp-for="imagenSobreMi" class="form-control" />
                 <span asp-validation-for="imagenSobreMi" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="fecha_alta" class="control-label"></label>
-                <input asp-for="fecha_alta" class="form-control" />
-                <span asp-validation-for="fecha_alta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

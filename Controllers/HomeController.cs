@@ -77,6 +77,10 @@ namespace PortfolioCore.Controllers
 
         public async Task<IActionResult> Relatos()
         {
+            //config
+            var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
+            ViewBag.config = config;
+
             return View(await _contextRelato.Relato.ToListAsync());
         }
         

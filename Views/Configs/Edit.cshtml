@@ -7,6 +7,12 @@
 <h1>Edit</h1>
 
 <h4>Config</h4>
+<p>
+    <small>
+        Los campos con * son obligatorios. <br>
+        Las imágenes para la portada deben tener el mismo tamaño.
+    </small>
+</p>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,41 +24,51 @@
             <input type="hidden" asp-for="imagen3Home" />
             <input type="hidden" asp-for="imagenCardRelatos" />
             <input type="hidden" asp-for="imagenCardPodcasts" />
-            <p><small>Las imágenes para la portada deben tener el mismo tamaño.</small></p>
             <div class="form-group">
                 <label asp-for="archivoImagen1Home" class="control-label"></label>
                 <input asp-for="archivoImagen1Home" accept="image/*" />
                 <span asp-validation-for="archivoImagen1Home" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="archivoImagen2Home" class="control-label"></label>
-                <input asp-for="archivoImagen2Home" accept="image/*" />
-                <span asp-validation-for="archivoImagen2Home" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="archivoImagen3Home" class="control-label"></label>
-                <input asp-for="archivoImagen3Home" accept="image/*" />
-                <span asp-validation-for="archivoImagen3Home" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="imagenRelatos" class="control-label"></label>
-                <input asp-for="imagenRelatos" class="form-control" />
-                <span asp-validation-for="imagenRelatos" class="text-danger"></span>
+                <img src="@("~/image/" + Model.imagen1Home)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
             </div>
             <div class="form-group">
                 <label asp-for="archivoImagenCardRelatos" class="control-label"></label>
                 <input asp-for="archivoImagenCardRelatos" accept="image/*" />
                 <span asp-validation-for="archivoImagenCardRelatos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="imagenPodcasts" class="control-label"></label>
-                <input asp-for="imagenPodcasts" class="form-control" />
-                <span asp-validation-for="imagenPodcasts" class="text-danger"></span>
+                <img src="@("~/image/" + Model.imagenCardRelatos)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
             </div>
             <div class="form-group">
                 <label asp-for="archivoImagenCardPodcasts" class="control-label"></label>
                 <input asp-for="archivoImagenCardPodcasts" accept="image/*" />
                 <span asp-validation-for="archivoImagenCardPodcasts" class="text-danger"></span>
+                <img src="@("~/image/" + Model.imagenCardPodcasts)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+            </div>
+            <div class="form-group">
+                <label asp-for="fecha_alta" class="control-label"></label>
+                <input asp-for="fecha_alta" class="form-control" />
+                <span asp-validation-for="fecha_alta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="archivoImagen2Home" class="control-label"></label>
+                <input asp-for="archivoImagen2Home" accept="image/*" />
+                <span asp-validation-for="archivoImagen2Home" class="text-danger"></span>
+                <img id="" src="@("~/image/" + Model.imagen2Home)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+            </div>
+            <div class="form-group">
+                <label asp-for="archivoImagen3Home" class="control-label"></label>
+                <input asp-for="archivoImagen3Home" accept="image/*" />
+                <span asp-validation-for="archivoImagen3Home" class="text-danger"></span>
+                <img id="" src="@("~/image/" + Model.imagen3Home)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+            </div>
+            <div class="form-group">
+                <label asp-for="archivoImagenRelatos" class="control-label"></label>
+                <input asp-for="archivoImagenRelatos" accept="image/*" />
+                <span asp-validation-for="archivoImagenRelatos" class="text-danger"></span>
+                <img id="" src="@("~/image/" + Model.imagenRelatos)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+            </div>
+            <div class="form-group">
+                <label asp-for="imagenPodcasts" class="control-label"></label>
+                <input asp-for="imagenPodcasts" class="form-control" />
+                <span asp-validation-for="imagenPodcasts" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="imagenTips" class="control-label"></label>
@@ -63,11 +79,6 @@
                 <label asp-for="imagenSobreMi" class="control-label"></label>
                 <input asp-for="imagenSobreMi" class="form-control" />
                 <span asp-validation-for="imagenSobreMi" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="fecha_alta" class="control-label"></label>
-                <input asp-for="fecha_alta" class="form-control" />
-                <span asp-validation-for="fecha_alta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
