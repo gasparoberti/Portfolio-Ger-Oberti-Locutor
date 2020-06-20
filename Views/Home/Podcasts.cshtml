@@ -4,28 +4,46 @@
     ViewData["Title"] = "Podcasts";
 }
 
-    <div class="text-center mb-5">
-        <h1 class="display-4">Podcasts</h1>
-    </div>
+@if (ViewBag.config != null
+   && ViewBag.config.imagenPodcasts != null
+   && ViewBag.config.visibleP == true
+   )
+{
+    <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagenPodcasts)" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
+}
 
-    <div class="card-deck">
-        @foreach (var item in Model.OrderByDescending(i => i.fecha_alta))
+<div class="text-center mb-5">
+    <h1 class="display-4">Podcasts</h1>
+</div>
+
+<div class="card-deck">
+    @foreach (var item in Model.OrderByDescending(i => i.fecha_alta))
+    {
+        @if (@item.visible == true)
         {
-            @if (@item.visible == true)
-            {
-                <div class="col-md-3 col-sm-6 mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="~/image/marcas_en_soundcloud_-_publicidad.jpg" alt="Card image" style="object-fit: cover">
-                        <div class="card-body">
-                            <h5 class="card-title">@item.titulo</h5>
-                            @*<p class="card-text">@item.descripcion</p>*@
-                            <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
-                            <div class="text-center">
-                                <a asp-route-id="@item.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar</a>
-                            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card">
+                    @if (ViewBag.config == null)
+                    {
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <p>Configure la card image para la miniatura de los podcasts en la configuracion general.</p>
+                        }
+                    }
+                    else
+                    {
+                        <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardPodcasts)" alt="Card image podcasts" style="object-fit: cover">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@item.titulo</h5>
+                        @*<p class="card-text">@item.descripcion</p>*@
+                        <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
+                        <div class="text-center">
+                            <a asp-route-id="@item.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar</a>
                         </div>
                     </div>
                 </div>
-            }
+            </div>
         }
-    </div>
+    }
+</div>

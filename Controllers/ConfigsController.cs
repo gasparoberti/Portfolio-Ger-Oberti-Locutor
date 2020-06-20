@@ -40,7 +40,7 @@ namespace PortfolioCore.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImage3Home,archivoImagenRelatos,archivoImagenCardRelatos,archivoImagenPodcasts,archivoImagenCardPodcasts,archivoImagenTips,archivoImagenSobreMi,fecha_alta")] Config config)
-        public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImagen3Home,archivoImagenRelatos,visibleR,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
+        public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImagen3Home,archivoImagenRelatos,visibleR,archivoImagenCardRelatos,archivoImagenPodcasts,visibleP,archivoImagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
         {
             if (config.archivoImagen1Home == null 
                 || config.archivoImagenCardRelatos == null 
@@ -151,6 +151,19 @@ namespace PortfolioCore.Controllers
                         await config.archivoImagenRelatos.CopyToAsync(fileStream);
                     }
                 }
+                
+                if (config.archivoImagenPodcasts != null)
+                {
+                    string fileNameP = "archivoImagenPodcasts";
+                    string extensionP = Path.GetExtension(config.archivoImagenPodcasts.FileName);
+                    config.imagenPodcasts = fileNameP += extensionP;
+                    string pathP = Path.Combine(wwwRootPath + "/image/", fileNameP);
+
+                    using (var fileStream = new FileStream(pathP, FileMode.Create))
+                    {
+                        await config.archivoImagenPodcasts.CopyToAsync(fileStream);
+                    }
+                }
 
 
                 _context.Add(config);
@@ -182,7 +195,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,archivoImagen1Home,imagen2Home,archivoImagen2Home,imagen3Home,archivoImagen3Home,imagenRelatos,archivoImagenRelatos,visibleR,imagenCardRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenCardPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
+        public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,archivoImagen1Home,imagen2Home,archivoImagen2Home,imagen3Home,archivoImagen3Home,imagenRelatos,archivoImagenRelatos,visibleR,imagenCardRelatos,archivoImagenCardRelatos,imagenPodcasts,archivoImagenPodcasts,visibleP,archivoImagenCardPodcasts,imagenCardPodcasts,imagenTips,imagenSobreMi,fecha_alta")] Config config)
         {
             if (id != config.id)
             {
@@ -194,7 +207,7 @@ namespace PortfolioCore.Controllers
                 try
                 {
                     string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string path, path2, path3, pathCR, pathCP, pathR = null;
+                    string path, path2, path3, pathCR, pathCP, pathR, pathP = null;
 
                     if (config.archivoImagen1Home != null)
                     {
@@ -271,6 +284,19 @@ namespace PortfolioCore.Controllers
                         using (var fileStream = new FileStream(pathR, FileMode.Create))
                         {
                             await config.archivoImagenRelatos.CopyToAsync(fileStream);
+                        }
+                    }
+                    
+                    if (config.archivoImagenPodcasts != null)
+                    {
+                        string fileNameP = "archivoImagenPodcasts";
+                        string extensionP = Path.GetExtension(config.archivoImagenPodcasts.FileName);
+                        config.imagenPodcasts = fileNameP += extensionP;
+                        pathP = Path.Combine(wwwRootPath + "/image/", fileNameP);
+
+                        using (var fileStream = new FileStream(pathP, FileMode.Create))
+                        {
+                            await config.archivoImagenPodcasts.CopyToAsync(fileStream);
                         }
                     }
 

@@ -16,6 +16,9 @@ namespace PortfolioCore.Models
         [Display(Name = "Imagen 1 Portada Home *")]
         public IFormFile archivoImagen1Home { get; set; }
 
+        [Display(Name = "Visible")]
+        public bool visibleH1 { get; set; }
+
 
         [Display(Name = "Imagen Card Relatos")]
         public string imagenCardRelatos { get; set; }
@@ -47,16 +50,22 @@ namespace PortfolioCore.Models
         [NotMapped]
         [Display(Name = "Imagen 2 Portada Home")]
         public IFormFile archivoImagen2Home { get; set; }
-        
-        
+
+        [Display(Name = "Visible")]
+        public bool visibleH2 { get; set; }
+
+
         [Display(Name = "Imagen 3 Portada Home")]
         public string imagen3Home { get; set; }
 
         [NotMapped]
         [Display(Name = "Imagen 3 Portada Home")]
         public IFormFile archivoImagen3Home { get; set; }
-        
-        
+
+        [Display(Name = "Visible")]
+        public bool visibleH3 { get; set; }
+
+
         [Display(Name = "Imagen Portada Relatos")]
         public string imagenRelatos { get; set; }
 
@@ -73,7 +82,10 @@ namespace PortfolioCore.Models
 
         [NotMapped]
         [Display(Name = "Imagen Portada Podcasts")]
-        public IFormFile archivoImagenPodcasts { get; set; } 
+        public IFormFile archivoImagenPodcasts { get; set; }
+
+        [Display(Name = "Visible")]
+        public bool visibleP { get; set; }
 
 
         [Display(Name = "Imagen Portada Tips")]
@@ -83,12 +95,18 @@ namespace PortfolioCore.Models
         [Display(Name = "Imagen Portada Tips")]
         public IFormFile archivoImagenTips { get; set; }
 
+        [Display(Name = "Visible")]
+        public bool visibleT { get; set; }
+
 
         [Display(Name = "Imagen Portada Sorbre Mí")]
         public string imagenSobreMi { get; set; }
 
         [NotMapped]
         [Display(Name = "Imagen Portada Sorbre Mí")]
-        public IFormFile archivoImagenSobreMi { get; set; }        
+        public IFormFile archivoImagenSobreMi { get; set; }
+
+        [Display(Name = "Visible")]
+        public bool visibleS { get; set; }
     }
 }

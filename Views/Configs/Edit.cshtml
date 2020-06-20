@@ -25,6 +25,7 @@
             <input type="hidden" asp-for="imagenCardRelatos" />
             <input type="hidden" asp-for="imagenCardPodcasts" />
             <input type="hidden" asp-for="imagenRelatos" />
+            <input type="hidden" asp-for="imagenPodcasts" />
             <div class="form-group">
                 <label asp-for="archivoImagen1Home" class="control-label"></label>
                 <input asp-for="archivoImagen1Home" accept="image/*" />
@@ -72,9 +73,15 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="imagenPodcasts" class="control-label"></label>
-                <input asp-for="imagenPodcasts" class="form-control" />
-                <span asp-validation-for="imagenPodcasts" class="text-danger"></span>
+                <label asp-for="archivoImagenPodcasts" class="control-label"></label>
+                <input asp-for="archivoImagenPodcasts" accept="image/*" />
+                <span asp-validation-for="archivoImagenPodcasts" class="text-danger"></span>
+                <img id="" src="@("~/image/" + Model.imagenPodcasts)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visibleP" /> @Html.DisplayNameFor(model => model.visibleP)
+                </label>
             </div>
             <div class="form-group">
                 <label asp-for="imagenTips" class="control-label"></label>

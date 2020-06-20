@@ -96,6 +96,10 @@ namespace PortfolioCore.Controllers
         
         public async Task<IActionResult> Podcasts()
         {
+            //config
+            var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
+            ViewBag.config = config;
+
             return View(await _contextPodcast.Podcast.ToListAsync());
         }
 
