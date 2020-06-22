@@ -4,18 +4,38 @@
     ViewData["Title"] = "DetalleTip";
 }
 
-    <div class="text-center">
-        <h1 class="display-4">@Model.titulo</h1>
 
-        <div class="text-muted">
-            <h5>@Model.descripcion</h5>
-        </div>
+<h1 class="display-4 text-center">@Model.titulo</h1>
 
-        <img class="m-2" src="@("~/image/" + Model.imagen)" asp-append-version="true" alt="Tip image" style="object-fit: cover; width: 70vw" />
+<div class="row text-muted text-justify mb-5">
+    <h5>@Model.descripcion</h5>
+</div>
 
-        <p>@Model.contenido</p>
+<div class="row">
+    @if (Model.id % 2 == 0)
+    {
+        <p class="text-justify">
+            <img class="ml-4" align="right" src="@("~/image/" + Model.imagen)" asp-append-version="true" alt="Tip image" style="object-fit: cover; width: 40vw" />
+            @Model.contenido
+        </p>
+    }
+    else
+    {
+        <p class="text-justify">
+            <img class="mr-4" align="left" src="@("~/image/" + Model.imagen)" asp-append-version="true" alt="Tip image" style="object-fit: cover; width: 40vw" />
+            @Model.contenido
+        </p>
+    }
+</div>
 
-        <div>
-            <a asp-action="Tips" class="btn btn-light m-3">Todos los tips</a>
-        </div>
+@*@if (Model.video != null)
+{
+    <div class="row justify-content-center m-5">
+        <iframe width="492" height="277" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+}*@
+
+<div class="row justify-content-center">
+    <a casp-action="Tips" class="btn btn-light m-3">Todos los tips</a>
+</div>
+

@@ -223,7 +223,7 @@ namespace PortfolioCore.Controllers
             "imagenRelatos,archivoImagenRelatos,visibleR," +
             "imagenCardRelatos,archivoImagenCardRelatos," +
             "imagenPodcasts,archivoImagenPodcasts,visibleP," +
-            "archivoImagenCardPodcasts,imagenCardPodcasts," +
+            "imagenCardPodcasts,archivoImagenCardPodcasts," +
             "imagenTips,archivoImagenTips,visibleT," +
             "imagenSobreMi," +
             "fecha_alta"

@@ -74,20 +74,27 @@ else
     <h1 class="display-4">Noticias</h1>
 </div>
 
+@{
+    int indice = 1;
+}
+
 <div class="card-columns">
     @foreach (var item in Model.OrderByDescending(i => i.fecha_alta))
     {
-        @if (@item.visible == true)
+        @if (@item.visible == true && indice < 7)
         {
             <div class="card">
                 <img class="card-img-top" src="@("/image/" + item.imagen)" alt="Card image" style="object-fit: cover">
-                <div class="card-body text-center">
+                <div class="card-body">
                     <h5 class="card-title">@item.titulo</h5>
                     @*<p class="card-text">@item.descripcion</p>*@
                     <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
-                    <a asp-route-id="@item.id" asp-action="DetalleNoticia" asp-controller="Home" class="btn btn-light">Leer más...</a>
+                    <div class="text-center">
+                        <a asp-route-id="@item.id" asp-action="DetalleNoticia" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                    </div>
                 </div>
             </div>
+            indice++;
         }
     }
 </div>
@@ -116,7 +123,7 @@ else
                 @*<p class="card-text">@item.descripcion</p>*@
                 <p class="card-text"><small class="text-muted">#Relatos</small></p>
                 <div class="text-center">
-                    <a asp-route-id="@ViewBag.relato.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light btn-block">Ver...</a>
+                    <a asp-route-id="@ViewBag.relato.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
                 </div>
             </div>
         </div>
@@ -140,7 +147,7 @@ else
                 @*<p class="card-text">@item.descripcion</p>*@
                 <p class="card-text"><small class="text-muted">#Podcasts</small></p>
                 <div class="text-center">
-                    <a asp-route-id="@ViewBag.podcast.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar...</a>
+                    <a asp-route-id="@ViewBag.podcast.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar</a>
                 </div>
             </div>
         </div>
@@ -185,7 +192,7 @@ else
                 @*<p class="card-text">@item.descripcion</p>*@
                 <p class="card-text"><small class="text-muted">#Relatos</small></p>
                 <div class="text-center">
-                    <a asp-route-id="@ViewBag.relatoFav.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light btn-block">Ver...</a>
+                    <a asp-route-id="@ViewBag.relatoFav.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
                 </div>
             </div>
         </div>
@@ -209,7 +216,7 @@ else
                 @*<p class="card-text">@item.descripcion</p>*@
                 <p class="card-text"><small class="text-muted">#Podcasts</small></p>
                 <div class="text-center">
-                    <a asp-route-id="@ViewBag.podcastFab.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar...</a>
+                    <a asp-route-id="@ViewBag.podcastFab.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar</a>
                 </div>
             </div>
         </div>
