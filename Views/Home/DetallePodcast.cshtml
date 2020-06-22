@@ -4,20 +4,73 @@
     ViewData["Title"] = "DetallePodcast";
 }
 
-    
-    <h1 class="display-4 text-center">@Model.titulo</h1>
 
-    <div class="text-muted text-justify">
-        <h5>@Model.descripcion</h5>
-    </div>
+@*<h1 class="display-4 text-center">@Model.titulo</h1>
 
-    <div class="m-4">
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="@Model.url"></iframe>
-    </div>
+<div class="text-muted text-justify">
+    <h5>@Model.descripcion</h5>
+</div>
 
-    <p class="text-justify">@Model.contenido</p>
+<div class="m-4">
+    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="@Model.url"></iframe>
+</div>
 
-    <div class="text-center">
-        <a asp-action="Podcasts" class="btn btn-light m-3">Todos los podcasts</a>
-    </div>
-   
+<p class="text-justify">@Model.contenido</p>
+
+<div class="text-center">
+    <a asp-action="Podcasts" class="btn btn-light m-3">Todos los podcasts</a>
+</div>*@
+
+
+<h1 class="display-4 text-center mb-4">@Model.titulo </h1>
+
+<div class="row mb-4 align-items-center">
+    @if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
+    {
+        <div class="col-sm-6">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="@Model.url"></iframe>
+        </div>
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Model.descripcion
+            </h5>
+        </div>
+    }
+    else
+    {
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Model.descripcion
+            </h5>
+        </div>
+
+        <div class="col-sm-6">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="@Model.url"></iframe>
+        </div>
+    }
+
+</div>
+
+
+<div class="row mb-4">
+    @Html.Raw(Model.contenido)
+</div>
+
+@*@if (Model.video != null)
+    {
+        <div class="row justify-content-center m-3">
+            <iframe width="492" height="277" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    }*@
+
+@*@if (Model.contenido2 != null)
+    {
+        <div class="row mb-4">
+            @Html.Raw(Model.contenido2)
+        </div>
+    }*@
+
+<div class="row justify-content-center">
+    <a asp-action="Tips" class="btn btn-light m-3">Todos los podcasts</a>
+</div>
+

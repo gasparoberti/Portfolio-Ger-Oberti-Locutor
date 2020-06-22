@@ -4,33 +4,57 @@
     ViewData["Title"] = "Detalle";
 }
 
-    
-<h1 class="display-4 text-center">@Model.titulo</h1>
+<h1 class="display-4 text-center mb-4">@Model.titulo </h1>
 
-<div class="row text-muted text-justify mb-5">
-    <h5 cla>@Model.descripcion</h5>
-</div>
-
-<div class="row">
-    @if (Model.id % 2 == 0)
+<div class="row mb-4 align-items-center">
+    @if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
     {
-        <p class="text-justify">
-            <img class="ml-4" align="right" src="@("~/image/" + Model.imagen)" asp-append-version="true" alt="Tip image" style="object-fit: cover; width: 40vw" />
-            @Model.contenido
-        </p>
+        <div class="col-sm-6">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Image About" />
+        </div>
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Model.descripcion
+            </h5>
+        </div>
     }
     else
     {
-        <p class="text-justify">
-            <img class="mr-4" align="left" src="@("~/image/" + Model.imagen)" asp-append-version="true" alt="Tip image" style="object-fit: cover; width: 40vw" />
-            @Model.contenido
-        </p>
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Model.descripcion
+            </h5>
+        </div>
+
+        <div class="col-sm-6">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Image About" />
+        </div>
     }
+
 </div>
+
+
+<div class="row mb-4">
+    @Html.Raw(Model.contenido)
+</div>
+
+@*@if (Model.video != null)
+    {
+        <div class="row justify-content-center m-3">
+            <iframe width="492" height="277" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    }*@
+
+@*@if (Model.contenido2 != null)
+    {
+        <div class="row mb-4">
+            @Html.Raw(Model.contenido2)
+        </div>
+    }*@
 
 <div class="row justify-content-center">
     <a asp-action="Noticias" class="btn btn-light m-3">Todas las noticias</a>
 </div>
-    
+
 
 
