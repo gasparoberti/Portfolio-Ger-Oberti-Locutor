@@ -24,8 +24,8 @@
                 </div>
                 <div class="col-sm-8">
                     <h5 class="lead text-justify">
-                        @item.descripcion
-                        @if (@item.contenido != null)
+                        @Html.Raw(item.descripcion)
+                        @if (item.contenido != null)
                         {
                             <a data-toggle="collapse" 
                                href="@("#collapse" + item.id.ToString())" 
@@ -41,7 +41,7 @@
             {
                 <div class="col-sm-8">
                     <h5 class="lead text-justify">
-                        @item.descripcion
+                        @Html.Raw(item.descripcion)
                         @if (@item.contenido != null)
                         {
                             <a data-toggle="collapse" 
@@ -59,7 +59,7 @@
                 </div>
             }
             <div class="collapse" id="@("collapse" + item.id.ToString())">
-                <p class="text-justify m-4">@item.contenido</p>
+                <p class="text-justify m-4">@Html.Raw(item.contenido)</p>
             </div>
         </div>
 

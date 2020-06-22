@@ -4,24 +4,6 @@
     ViewData["Title"] = "DetallePodcast";
 }
 
-
-@*<h1 class="display-4 text-center">@Model.titulo</h1>
-
-<div class="text-muted text-justify">
-    <h5>@Model.descripcion</h5>
-</div>
-
-<div class="m-4">
-    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="@Model.url"></iframe>
-</div>
-
-<p class="text-justify">@Model.contenido</p>
-
-<div class="text-center">
-    <a asp-action="Podcasts" class="btn btn-light m-3">Todos los podcasts</a>
-</div>*@
-
-
 <h1 class="display-4 text-center mb-4">@Model.titulo </h1>
 
 <div class="row mb-4 align-items-center">
@@ -32,7 +14,7 @@
         </div>
         <div class="col-sm-6">
             <h5 class="lead text-justify">
-                @Model.descripcion
+                @Html.Raw(Model.descripcion)
             </h5>
         </div>
     }
@@ -40,7 +22,7 @@
     {
         <div class="col-sm-6">
             <h5 class="lead text-justify">
-                @Model.descripcion
+                @Html.Raw(Model.descripcion)
             </h5>
         </div>
 
