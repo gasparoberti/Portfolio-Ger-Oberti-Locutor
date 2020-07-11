@@ -1,58 +1,57 @@
 ﻿@model PortfolioCore.Models.Noticia
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle";
 }
 
-<h1>Details</h1>
+<h1 class="display-4 text-center mb-4">@Model.titulo </h1>
 
-<div>
-    <h4>Noticia</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.titulo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.titulo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.contenido)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.contenido)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.imagen)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.imagen)
-        </dd>
-        <dt class="col-sm-2">
-        </dt>
-        <dd class="col-sm-10">
-            <img src="@("~/image/" + Model.imagen)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.visible)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.visible)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.fecha_alta)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.fecha_alta)
-        </dd>
-    </dl>
+<div class="row mb-4 align-items-center">
+    @if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
+    {
+        <div class="col-sm-6">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Noticia" />
+        </div>
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Html.Raw(Model.descripcion)
+            </h5>
+        </div>
+    }
+    else
+    {
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Html.Raw(Model.descripcion)
+            </h5>
+        </div>
+
+        <div class="col-sm-6">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Noticia" />
+        </div>
+    }
+
 </div>
+
+
+<div class="row text-justify m-1 mb-3">
+    @Html.Raw(Model.contenido)
+</div>
+
+@if (Model.video != null && Model.visibleV != false)
+{
+    <div class="row justify-content-center m-1 mb-2">
+        <iframe width="492" height="277" class="embed-responsive-item" src="@Model.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+}
+
+@if (Model.contenido2 != null && Model.visibleC2 != false)
+{
+    <div class="row text-justify m-1 mt-3">
+        @Html.Raw(Model.contenido2)
+    </div>
+}
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
     <a asp-action="Index">Back to List</a>

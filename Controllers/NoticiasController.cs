@@ -57,7 +57,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,titulo,descripcion,contenido,archivoImagen,visible,fecha_alta")] Noticia noticia)
+        public async Task<IActionResult> Create([Bind("id,titulo,descripcion,contenido,archivoImagen,visible,fecha_alta,video,contenido2,visibleV,visibleC2")] Noticia noticia)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,imagen,visible,fecha_alta,archivoImagen")] Noticia noticia)
+        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,imagen,visible,fecha_alta,archivoImagen,video,contenido2,visibleV,visibleC2")] Noticia noticia)
         {
             if (id != noticia.id)
             {
