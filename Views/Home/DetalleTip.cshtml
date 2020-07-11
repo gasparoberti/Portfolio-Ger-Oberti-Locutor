@@ -4,14 +4,13 @@
     ViewData["Title"] = "DetalleTip";
 }
 
-
 <h1 class="display-4 text-center mb-4">@Model.titulo </h1>
 
 <div class="row mb-4 align-items-center">
     @if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
     {
         <div class="col-sm-6">
-            <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Image About" />
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Noticia" />
         </div>
         <div class="col-sm-6">
             <h5 class="lead text-justify">
@@ -28,30 +27,30 @@
         </div>
 
         <div class="col-sm-6">
-            <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Image About" />
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Noticia" />
         </div>
     }
 
 </div>
 
 
-<div class="row mb-4">
+<div class="row text-justify m-1 mb-3">
     @Html.Raw(Model.contenido)
 </div>
 
-@*@if (Model.video != null)
+@if (Model.video != null && Model.visibleV != false)
 {
-    <div class="row justify-content-center m-4">
-        <iframe width="492" height="277" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="row justify-content-center m-1 mb-2">
+        <iframe width="492" height="277" class="embed-responsive-item" src="@Model.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 }
 
-@if (Model.contenido2 != null)
+@if (Model.contenido2 != null && Model.visibleC2 != false)
 {
-    <div class="row mb-4">
-        @Html.Raw(Model.contenido)
+    <div class="row text-justify m-1 mt-3">
+        @Html.Raw(Model.contenido2)
     </div>
-}*@
+}
 
 <div class="row justify-content-center">
     <a asp-action="Tips" class="btn btn-light m-3">Todos los tips</a>
