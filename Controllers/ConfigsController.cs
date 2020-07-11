@@ -41,7 +41,9 @@ namespace PortfolioCore.Controllers
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("id,archivoImagen1Home,archivoImagen2Home,archivoImage3Home,archivoImagenRelatos,archivoImagenCardRelatos,archivoImagenPodcasts,archivoImagenCardPodcasts,archivoImagenTips,archivoImagenSobreMi,fecha_alta")] Config config)
         public async Task<IActionResult> Create([Bind("id," +
-            "archivoImagen1Home,archivoImagen2Home,archivoImagen3Home," +
+            "archivoImagen1Home," +
+            "archivoImagen2Home,visibleH2," +
+            "archivoImagen3Home,visibleH3," +
             "archivoImagenRelatos,visibleR," +
             "archivoImagenCardRelatos," +
             "archivoImagenPodcasts,visibleP," +
@@ -218,8 +220,8 @@ namespace PortfolioCore.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,imagen1Home,archivoImagen1Home," +
-            "imagen2Home,archivoImagen2Home," +
-            "imagen3Home,archivoImagen3Home," +
+            "imagen2Home,archivoImagen2Home,visibleH2," +
+            "imagen3Home,archivoImagen3Home,visibleH3," +
             "imagenRelatos,archivoImagenRelatos,visibleR," +
             "imagenCardRelatos,archivoImagenCardRelatos," +
             "imagenPodcasts,archivoImagenPodcasts,visibleP," +

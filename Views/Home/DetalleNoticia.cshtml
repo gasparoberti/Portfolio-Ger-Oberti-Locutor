@@ -10,7 +10,7 @@
     @if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
     {
         <div class="col-sm-6">
-            <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Image About" />
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Noticia" />
         </div>
         <div class="col-sm-6">
             <h5 class="lead text-justify">
@@ -27,30 +27,32 @@
         </div>
 
         <div class="col-sm-6">
-            <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Image About" />
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Noticia" />
         </div>
     }
 
 </div>
 
 
-<div class="row mb-4">
+<div class="row text-justify m-1 mb-3">
     @Html.Raw(Model.contenido)
 </div>
 
 @*@if (Model.video != null)
-    {
-        <div class="row justify-content-center m-3">
+    {*@
+        <div class="row justify-content-center m-1 mb-2">
             <iframe width="492" height="277" class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-    }*@
+    @*}
 
-@*@if (Model.contenido2 != null)
-    {
-        <div class="row mb-4">
-            @Html.Raw(Model.contenido2)
+@if (Model.contenido2 != null)
+    {*@
+        <div class="row text-justify m-1 mt-3">
+            @Html.Raw(Model.contenido)
         </div>
-    }*@
+    @*}*@
+
+
 
 <div class="row justify-content-center">
     <a asp-action="Noticias" class="btn btn-light m-3">Todas las noticias</a>

@@ -56,11 +56,21 @@
                 <span asp-validation-for="archivoImagen2Home" class="text-danger"></span>
                 <img id="" src="@("~/image/" + Model.imagen2Home)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
             </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visibleH2" /> @Html.DisplayNameFor(model => model.visibleH2)
+                </label>
+            </div>
             <div class="form-group">
                 <label asp-for="archivoImagen3Home" class="control-label"></label>
                 <input asp-for="archivoImagen3Home" accept="image/*" />
                 <span asp-validation-for="archivoImagen3Home" class="text-danger"></span>
                 <img id="" src="@("~/image/" + Model.imagen3Home)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visibleH3" /> @Html.DisplayNameFor(model => model.visibleH3)
+                </label>
             </div>
             <div class="form-group">
                 <label asp-for="archivoImagenRelatos" class="control-label"></label>
@@ -94,11 +104,6 @@
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="visibleT" /> @Html.DisplayNameFor(model => model.visibleT)
                 </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="imagenSobreMi" class="control-label"></label>
-                <input asp-for="imagenSobreMi" class="form-control" />
-                <span asp-validation-for="imagenSobreMi" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

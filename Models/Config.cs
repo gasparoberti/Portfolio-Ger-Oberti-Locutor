@@ -16,10 +16,6 @@ namespace PortfolioCore.Models
         [Display(Name = "Imagen 1 Portada Home *")]
         public IFormFile archivoImagen1Home { get; set; }
 
-        [Display(Name = "Visible")]
-        public bool visibleH1 { get; set; }
-
-
         [Display(Name = "Imagen Card Relatos")]
         public string imagenCardRelatos { get; set; }
 
@@ -97,16 +93,5 @@ namespace PortfolioCore.Models
 
         [Display(Name = "Visible")]
         public bool visibleT { get; set; }
-
-
-        [Display(Name = "Imagen Portada Sorbre Mí")]
-        public string imagenSobreMi { get; set; }
-
-        [NotMapped]
-        [Display(Name = "Imagen Portada Sorbre Mí")]
-        public IFormFile archivoImagenSobreMi { get; set; }
-
-        [Display(Name = "Visible")]
-        public bool visibleS { get; set; }
     }
 }

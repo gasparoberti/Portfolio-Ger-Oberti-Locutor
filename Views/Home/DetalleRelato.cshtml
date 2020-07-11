@@ -6,37 +6,55 @@
 
 <h1 class="display-4 text-center mb-4">@Model.titulo </h1>
 
-<div class="row mb-4 align-items-center">
-    @if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
-    {
-        <div class="col-sm-6">
-            <iframe class="embed-responsive-item" src="@Model.url" allowfullscreen></iframe>
-        </div>
-        <div class="col-sm-6">
-            <h5 class="lead text-justify">
-                @Html.Raw(Model.descripcion)
-            </h5>
-        </div>
-    }
-    else
-    {
-        <div class="col-sm-6">
-            <h5 class="lead text-justify">
-                @Html.Raw(Model.descripcion)
-            </h5>
-        </div>
+@*<div class="row mb-4 align-items-center">
+        @if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
+        {
+            <div class="col-sm-6">
+                <iframe class="embed-responsive-item" src="@Model.url" allowfullscreen></iframe>
+            </div>
+            <div class="col-sm-6">
+                <h5 class="lead text-justify">
+                    @Html.Raw(Model.descripcion)
+                </h5>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-6">
+                <h5 class="lead text-justify">
+                    @Html.Raw(Model.descripcion)
+                </h5>
+            </div>
 
-        <div class="col-sm-6">
-            <iframe class="embed-responsive-item" src="@Model.url" allowfullscreen></iframe>
-        </div>
-    }
+            <div class="col-sm-6">
+                <iframe class="embed-responsive-item" src="@Model.url" allowfullscreen></iframe>
+            </div>
+        }
 
+    </div>*@
+
+<h5 class="lead text-justify">
+    @Html.Raw(Model.descripcion)
+</h5>
+
+<div class="row justify-content-center m-3">
+    <iframe width="492" height="277" class="embed-responsive-item" src="@Model.url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 
 <div class="row mb-4">
     @Html.Raw(Model.contenido)
 </div>
+
+
+<div>
+    <div style="float: left;">
+        <iframe class="mr-5" width="220" height="165" src="//www.youtube.com/embed/fRNM8WfV_8Q?rel=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    @Html.Raw(Model.contenido)
+</div>
+
+
 
 @*@if (Model.video != null)
     {
