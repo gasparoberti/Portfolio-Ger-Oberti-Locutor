@@ -7,15 +7,21 @@
 <h1>Edit</h1>
 
 <h4>Podcast</h4>
+<p>
+    <small>
+        Los campos con * son obligatorios.<br>
+    </small>
+</p>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="id" />
+            <input type="hidden" asp-for="imagen" />
             <div class="form-group">
                 <label asp-for="url" class="control-label"></label>
-                <input asp-for="url" class="form-control"/>
+                <input asp-for="url" class="form-control" />
                 <span asp-validation-for="url" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -49,6 +55,26 @@
                 <label asp-for="fecha_alta" class="control-label"></label>
                 <input asp-for="fecha_alta" class="form-control" />
                 <span asp-validation-for="fecha_alta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="archivoImagen" class="control-label"></label>
+                <input asp-for="archivoImagen" accept="image/*" />
+                <span asp-validation-for="archivoImagen" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visibleI" /> @Html.DisplayNameFor(model => model.visibleI)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="contenido2" class="control-label"></label>
+                <textarea asp-for="contenido2" class="form-control"></textarea>
+                <span asp-validation-for="contenido2" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visibleC2" /> @Html.DisplayNameFor(model => model.visibleC2)
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

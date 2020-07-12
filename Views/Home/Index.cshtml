@@ -78,7 +78,7 @@ else
     int indice = 1;
 }
 
-<div class="card-deck">
+<div class="row">
     @foreach (var item in Model.OrderByDescending(i => i.fecha_alta))
     {
         @if (@item.visible == true && indice < 7)
@@ -89,12 +89,7 @@ else
                     <div class="card-body">
                         <h5 class="card-title">@item.titulo</h5>
                         @*<p class="card-text">@Html.Raw(item.descripcion)</p>*@
-                        <p class="card-text">
-                            <small class="text-muted">
-                                @Html.Raw(item.descripcion) 
-                                <strong>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</strong>
-                            </small>
-                        </p>
+                        <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
                         <div class="text-center">
                             <a asp-route-id="@item.id" asp-action="DetalleNoticia" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
                         </div>

@@ -27,7 +27,7 @@ namespace PortfolioCore.Models
         public string contenido { get; set; }
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]
-        [Display(Name = "Visible")]
+        [Display(Name = "Relato Visible")]
         public bool visible { get; set; }
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]

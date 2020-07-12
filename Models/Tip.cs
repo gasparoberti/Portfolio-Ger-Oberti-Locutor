@@ -27,7 +27,7 @@ namespace PortfolioCore.Models
         public string imagen { get; set; }
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]
-        [Display(Name = "Visible")]
+        [Display(Name = "Tip Visible")]
         public bool visible { get; set; }
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]

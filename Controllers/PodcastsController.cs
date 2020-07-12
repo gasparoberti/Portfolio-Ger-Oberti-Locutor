@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PortfolioCore.Data;
@@ -10,10 +13,12 @@ namespace PortfolioCore.Controllers
     public class PodcastsController : Controller
     {
         private readonly MvcPodcastContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public PodcastsController(MvcPodcastContext context)
+        public PodcastsController(MvcPodcastContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Podcasts
@@ -51,13 +56,32 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,url,titulo,descripcion,contenido,visible,prioridad,fecha_alta")] Podcast podcast)
+        public async Task<IActionResult> Create([Bind("id,url,titulo,descripcion,contenido,visible,prioridad,fecha_alta,archivoImagen,contenido2,visibleI,visibleC2")] Podcast podcast)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(podcast);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (podcast.archivoImagen == null)
+                {
+                    ModelState.AddModelError("archivoImagen", "Imagen es un campo requerido.");
+                }
+                else
+                {
+                    //guarda la imagen en wwwroot/image
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(podcast.archivoImagen.FileName);
+                    string extension = Path.GetExtension(podcast.archivoImagen.FileName);
+                    podcast.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/image/", fileName);
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await podcast.archivoImagen.CopyToAsync(fileStream);
+                    }
+
+                    _context.Add(podcast);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             return View(podcast);
         }
@@ -83,7 +107,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,url,titulo,descripcion,contenido,visible,prioridad,fecha_alta")] Podcast podcast)
+        public async Task<IActionResult> Edit(int id, [Bind("id,url,titulo,descripcion,contenido,visible,prioridad,fecha_alta,imagen,archivoImagen,contenido2,visibleI,visibleC2")] Podcast podcast)
         {
             if (id != podcast.id)
             {
@@ -94,6 +118,22 @@ namespace PortfolioCore.Controllers
             {
                 try
                 {
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string path = null;
+
+                    if (podcast.archivoImagen != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(podcast.archivoImagen.FileName);
+                        string extension = Path.GetExtension(podcast.archivoImagen.FileName);
+                        podcast.imagen = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        path = Path.Combine(wwwRootPath + "/image/", fileName);
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await podcast.archivoImagen.CopyToAsync(fileStream);
+                        }
+                    }
+
                     _context.Update(podcast);
                     await _context.SaveChangesAsync();
                 }
