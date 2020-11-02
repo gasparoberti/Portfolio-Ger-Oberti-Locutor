@@ -16,7 +16,7 @@
 </p>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -24,11 +24,11 @@
                 <input asp-for="archivoImagen1Home" accept="image/*" />
                 <span asp-validation-for="archivoImagen1Home" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="archivoImagenCardRelatos" class="control-label"></label>
                 <input asp-for="archivoImagenCardRelatos" accept="image/*" />
                 <span asp-validation-for="archivoImagenCardRelatos" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="archivoImagenCardPodcasts" class="control-label"></label>
                 <input asp-for="archivoImagenCardPodcasts" accept="image/*" />
@@ -60,6 +60,16 @@
                 </label>
             </div>
             <div class="form-group">
+                <label asp-for="videoSobreMi" class="control-label"></label>
+                <input asp-for="videoSobreMi" class="form-control" />
+                <span asp-validation-for="videoSobreMi" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visibleV" /> @Html.DisplayNameFor(model => model.visibleV)
+                </label>
+            </div>
+            @*<div class="form-group">
                 <label asp-for="archivoImagenRelatos" class="control-label"></label>
                 <input asp-for="archivoImagenRelatos" accept="image/*" />
                 <span asp-validation-for="archivoImagenRelatos" class="text-danger"></span>
@@ -67,6 +77,16 @@
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="visibleR" /> @Html.DisplayNameFor(model => model.visibleR)
+                </label>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="archivoimagenPortfolio" class="control-label"></label>
+                <input asp-for="archivoimagenPortfolio" accept="image/*" />
+                <span asp-validation-for="archivoimagenPortfolio" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visiblePorf" /> @Html.DisplayNameFor(model => model.visiblePorf)
                 </label>
             </div>
             <div class="form-group">

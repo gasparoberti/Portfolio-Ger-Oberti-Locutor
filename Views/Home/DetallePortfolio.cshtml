@@ -1,0 +1,107 @@
+﻿@model PortfolioCore.Models.Portfolio
+
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+<h1 class="display-4 text-center mb-4">@Model.titulo </h1>
+
+<div class="row mb-4 align-items-center">
+    @if (Model.descripcion == null)
+    {
+        <div align="center">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid" width="50%" alt="Noticia" />
+        </div>
+    }
+    else if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
+    {
+        <div class="col-sm-6">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Noticia" />
+        </div>
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Html.Raw(Model.descripcion)
+            </h5>
+        </div>
+    }
+    else if (Model.id % 2 != 0)
+    {
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Html.Raw(Model.descripcion)
+            </h5>
+        </div>
+
+        <div class="col-sm-6">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Noticia" />
+        </div>
+    }
+
+</div>
+
+<div class="row text-justify m-1 mb-3">
+    @Html.Raw(Model.contenido)
+</div>
+
+@if (Model.video != null && Model.visibleV != false)
+{
+    <div class="row justify-content-center m-1 mb-2">
+        <iframe width="466" height="251" class="embed-responsive-item" src="@Model.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+}
+
+@if (Model.contenido2 != null && Model.visibleC2 != false)
+{
+    <div class="row text-justify m-1 mt-3">
+        @Html.Raw(Model.contenido2)
+    </div>
+}
+
+@if (ViewBag.porfolios != null)
+{
+    List<int> ids = new List<int>(); /*guardo los id para luego acceder a alguno diferente del model de manera random*/
+    Portfolio p = null;
+    foreach (var item in ViewBag.porfolios)
+    {
+        ids.Add(item.id);
+    }
+
+    Random r = new Random();
+    IEnumerable<int> threeRandom = ids.OrderBy(x => r.Next()).Take(1);  /*toma uno al azar de todos los elementos de la lista*/
+
+    int id = @threeRandom.FirstOrDefault();
+
+    foreach (var item in ViewBag.porfolios)
+    {
+        if (item.id == id && id != Model.id)
+        {
+            p = item;
+        }
+    }
+
+    if (p != null)
+    {
+        <div class="card mb-3 mt-5">
+            <div class="row no-gutters">
+                <div class="col-3">
+                    <img src="@("~/image/" + p.imagen)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+                </div>
+                <div class="col-9">
+                    <div class="card-body">
+                        <h5 class="card-title">@p.titulo</h5>
+                        <p class="card-text">@Html.Raw(p.descripcion)</p>
+                        <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", p.fecha_alta))</small></p>
+                        <a asp-route-id="@p.id" asp-action="DetallePortfolio" asp-controller="Home" class="btn btn-light">Leer más...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<div class="row justify-content-center">
+    <a asp-action="Portfolios" class="btn btn-light m-3">Ver todos</a>
+</div>
+
+
+

@@ -14,20 +14,18 @@ namespace PortfolioCore.Models
         [Display(Name = "Titulo *")]
         public string titulo { get; set; }
 
-        [Required(ErrorMessage = "{0} es un campo requerido.")]
-        [StringLength(1000, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
-        [Display(Name = "Bajada *")]
+        [StringLength(2500, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
+        [Display(Name = "Descripción")]
         public string descripcion { get; set; }
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]
-        [StringLength(3000, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
-        [Display(Name = "Cuerpo *")]
+        [StringLength(4500, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
+        [Display(Name = "Contenido *")]
         public string contenido { get; set; }
 
         [Display(Name = "Imagen *")]
         public string imagen { get; set; }
 
-        [Required(ErrorMessage = "{0} es un campo requerido.")]
         [Display(Name = "Noticia Visible")]
         public bool visible { get; set; }
 
@@ -45,7 +43,6 @@ namespace PortfolioCore.Models
         [Display(Name = "URL Video")]
         public string video { get; set; }
 
-        [Required(ErrorMessage = "{0} es un campo requerido.")]
         [Display(Name = "Visible")]
         public bool visibleV { get; set; }
 
@@ -53,7 +50,6 @@ namespace PortfolioCore.Models
         [Display(Name = "Cuerpo 2")]
         public string contenido2 { get; set; }
 
-        [Required(ErrorMessage = "{0} es un campo requerido.")]
         [Display(Name = "Visible")]
         public bool visibleC2 { get; set; }
     }

@@ -14,18 +14,22 @@
 </p>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="titulo" class="control-label"></label>
-                <input asp-for="titulo" class="form-control" />
+                <input asp-for="titulo" class="form-control" id="inputTitulo" onKeyUp="cantidadCaracteres()" />
                 <span asp-validation-for="titulo" class="text-danger"></span>
+                <label id="titulo" class="text-secondary"></label>
             </div>
             <div class="form-group">
                 <label asp-for="descripcion" class="control-label"></label>
                 <textarea asp-for="descripcion" class="form-control"></textarea>
                 <span asp-validation-for="descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label id="result" class="text-secondary"></label>
             </div>
             <div class="form-group">
                 <label asp-for="contenido" class="control-label"></label>
@@ -77,6 +81,8 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script src="~/js/site.js"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

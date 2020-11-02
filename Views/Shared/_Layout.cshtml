@@ -7,9 +7,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PortfolioCore</title>
+    <title>@ViewData["Title"] - Ger Oberti Locutor</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'wordcount'
+        });
+
+        
+    </script>
 </head>
 <body>
     <header>
@@ -26,8 +36,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Relatos">Relatos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Portfolios">Portfolio</a>
                         </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Relatos">Relatos</a>
+                            </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Podcasts">Podcasts</a>
                         </li>
@@ -48,7 +61,8 @@
                                     <a class="dropdown-item" asp-controller="SobreMi" asp-action="Index">Sobre Mí</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" asp-area="" asp-controller="Noticias" asp-action="Index">Noticias</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Relatos" asp-action="Index">Relatos</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Portfolios" asp-action="Index">Portfolio</a>
+                                    @*<a class="dropdown-item" asp-area="" asp-controller="Relatos" asp-action="Index">Relatos</a>*@
                                     <a class="dropdown-item" asp-area="" asp-controller="Podcasts" asp-action="Index">Podcasts</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Tips" asp-action="Index">Tips</a>
                                 </div>
@@ -66,61 +80,66 @@
     </div>
 
     <!-- Footer -->
-    <footer id="footer" class="border-top text-muted pt-3">
-
+    <footer id="footer" class="border-top text-muted pt-5">
         <div class="container">
-
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <ul class="list-unstyled list-inline text-center py-2">
+            <div class="text-center">
+                <ul class="list-inline text-center">
                     <li class="list-inline-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                        <a href="https://www.instagram.com/geroberti/?hl=es-la" target="_blank" style="color:gray;"><strong>Instagram</strong></a>
                     </li>
                     <li class="list-inline-item">
-                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                        </form>
-                    </li>
-                </ul>
-            }
-            else
-            {
-                <ul class="list-unstyled list-inline text-center py-2">
-                    <li class="list-inline-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                        <a href="https://es-la.facebook.com/pg/gerobertilocutor/posts/" target="_blank" style="color:gray;"><strong>Facebook</strong></a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        <a href="https://www.youtube.com/channel/UCAKIwY3xiDGDy0BUBycvjcw   " target="_blank" style="color:gray;"><strong>Youtube</strong></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/germ%C3%A1n-oberti-388092147/" target="_blank" style="color:gray;"><strong>LinkedIn</strong></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/geroberti" target="_blank" style="color:gray;"><strong>Twitter</strong></a>
                     </li>
                 </ul>
-            }
-
-            <div class="row">
-                <div class="col-sm-6">
-                    <address>
-                        One Microsoft Way<br />
-                        Redmond, WA 98052-6399<br />
-                        425.555.0100
-                    </address>
-
-                    <address>
-                        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-                        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-                    </address>
-                </div>
-                <div class="col-sm-6">
-
-                </div>
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <strong>Contacto:</strong>   <a href="mailto:germanoberti94@gmail.com" style="color:gray;">germanoberti94@gmail.com</a>
+                    </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="list-inline-item">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        @*<li class="list-inline-item">
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            </li>*@
+                        <li class="list-inline-item">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
+                    }
+                </ul>
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <small class="text-muted">
+                            &copy; @DateTime.Now.Year - Desarrollada por
+                            <a href="https://www.linkedin.com/in/gaspar-oberti-76a750152/" target="_blank" style="color:gray;">Gaspar Oberti</a>
+                            con contribuciones de
+                            <a href="https://gitlab.com/esteebanlen" target="_blank" style="color:gray;">Esteban Lencina,</a>
+                            <a href="https://gitlab.com/ericjm77" target="_blank" style="color:gray;">Eric Marc</a>
+                            y
+                            <a href="https://www.linkedin.com/in/joaqin11" target="_blank" style="color:gray;">Joaquín Bazán</a>
+                        </small>
+                    </li>
+                </ul>
             </div>
-
-
-            <div class="footer-copyright text-center">
-                <p>&copy; @DateTime.Now.Year - <a href="">geo</a></p>
-            </div>
-
         </div>
-
-
 
     </footer>
 
@@ -128,6 +147,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
-    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 </body>
 </html>

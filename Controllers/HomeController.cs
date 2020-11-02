@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MvcNoticia.Data;
+//using MvcNoticia.Data;
 using PortfolioCore.Data;
 using PortfolioCore.Models;
 
@@ -20,17 +20,19 @@ namespace PortfolioCore.Controllers
         private readonly MvcRelatoContext _contextRelato;
         private readonly MvcTipContext _contextTip;
         private readonly MvcSobreMiContext _contextSobreMi;
+        private readonly MvcPortfolioContext _contextPortfolio;
         private readonly MvcPodcastContext _contextPodcast;
         private readonly MvcConfigContext _contextConfig;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, 
-            MvcNoticiaContext context, 
+        public HomeController(ILogger<HomeController> logger,
+            MvcNoticiaContext context,
             MvcRelatoContext contextRelato,
-            MvcTipContext contextTip, 
+            MvcTipContext contextTip,
             MvcSobreMiContext contextSobreMi,
+            MvcPortfolioContext contextPortfolio,
             MvcPodcastContext contextPodcast,
-            MvcConfigContext contextConfig, 
+            MvcConfigContext contextConfig,
             IWebHostEnvironment hostEnvironment)
         {
             _logger = logger;
@@ -38,6 +40,7 @@ namespace PortfolioCore.Controllers
             _contextRelato = contextRelato;
             _contextTip = contextTip;
             _contextSobreMi = contextSobreMi;
+            _contextPortfolio = contextPortfolio;
             _contextPodcast = contextPodcast;
             _contextConfig = contextConfig;
             this._hostEnvironment = hostEnvironment;
@@ -49,26 +52,23 @@ namespace PortfolioCore.Controllers
             var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
             ViewBag.config = config;
 
+            var portfolio = (from p in _contextPortfolio.Portfolio where p != null orderby p.fecha_alta descending select p).DefaultIfEmpty().First();
+            ViewBag.portfolio = portfolio;
 
-            //últimas publicaciones
-            var relato = (from r in _contextRelato.Relato orderby r.fecha_alta descending select r).First();
-            ViewBag.relato = relato;
-
-            var podcast = (from p in _contextPodcast.Podcast orderby p.fecha_alta descending select p).First();
+            var podcast = (from p in _contextPodcast.Podcast where p != null orderby p.fecha_alta descending select p).DefaultIfEmpty().First();
             ViewBag.podcast = podcast;
 
-            var tip = (from t in _contextTip.Tip orderby t.fecha_alta descending select t).First();
+            var tip = (from t in _contextTip.Tip where t != null orderby t.fecha_alta descending select t).DefaultIfEmpty().First();
             ViewBag.tip = tip;
 
+            
+            var portfolioFav = (from p in _contextPortfolio.Portfolio where p != null orderby p.prioridad select p).DefaultIfEmpty().First();
+            ViewBag.portfolioFav = portfolioFav;
 
-            //publicaciones favoritas
-            var relatoFav = (from r in _contextRelato.Relato orderby r.prioridad select r).First();
-            ViewBag.relatoFav = relatoFav;
-
-            var podcastFab = (from p in _contextPodcast.Podcast orderby p.prioridad select p).First();
+            var podcastFab = (from p in _contextPodcast.Podcast where p != null orderby p.prioridad select p).DefaultIfEmpty().First();
             ViewBag.podcastFab = podcastFab;
 
-            var tipFab = (from t in _contextTip.Tip orderby t.prioridad select t).First();
+            var tipFab = (from t in _contextTip.Tip where t != null orderby t.prioridad select t).DefaultIfEmpty().First();
             ViewBag.tipFab = tipFab;
 
 
@@ -83,16 +83,7 @@ namespace PortfolioCore.Controllers
 
             return View(await _context.Noticia.ToListAsync());
         }
-        
-        public async Task<IActionResult> Relatos()
-        {
-            //config
-            var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
-            ViewBag.config = config;
 
-            return View(await _contextRelato.Relato.ToListAsync());
-        }
-        
         public async Task<IActionResult> Tips()
         {
             //config
@@ -104,9 +95,13 @@ namespace PortfolioCore.Controllers
 
         public async Task<IActionResult> SobreMi()
         {
+            //config
+            var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
+            ViewBag.config = config;
+
             return View(await _contextSobreMi.SobreMi.ToListAsync());
         }
-        
+
         public async Task<IActionResult> Podcasts()
         {
             //config
@@ -116,15 +111,29 @@ namespace PortfolioCore.Controllers
             return View(await _contextPodcast.Podcast.ToListAsync());
         }
 
+        public async Task<IActionResult> Portfolios()
+        {
+            //config
+            var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
+            ViewBag.config = config;
+
+            return View(await _contextPortfolio.Portfolio.ToListAsync());
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+
         // GET: Noticias/Detalles/5
         public async Task<IActionResult> DetalleNoticia(int? id)
         {
+            //noticias
+            var noticias = (from n in _context.Noticia where n != null select n);
+            ViewBag.noticias = noticias;
+
             if (id == null)
             {
                 return NotFound();
@@ -140,9 +149,35 @@ namespace PortfolioCore.Controllers
             return View(noticia);
         }
         
-        // GET: Noticias/Detalles/5
+        // GET: Portfolios/Detalles/5
+        public async Task<IActionResult> DetallePortfolio(int? id)
+        {
+            //porfolios
+            var porfolios = (from p in _contextPortfolio.Portfolio where p != null select p);
+            ViewBag.porfolios = porfolios;
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var portfolio = await _contextPortfolio.Portfolio
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (portfolio == null)
+            {
+                return NotFound();
+            }
+
+            return View(portfolio);
+        }
+
+        // GET: Tips/Detalles/5
         public async Task<IActionResult> DetalleTip(int? id)
         {
+            //tips
+            var tips = (from t in _contextTip.Tip where t != null select t);
+            ViewBag.tips = tips;
+
             if (id == null)
             {
                 return NotFound();
@@ -157,7 +192,7 @@ namespace PortfolioCore.Controllers
 
             return View(tip);
         }
-        
+
         // GET: Relatos/Detalles/5
         public async Task<IActionResult> DetalleRelato(int? id)
         {
@@ -175,10 +210,18 @@ namespace PortfolioCore.Controllers
 
             return View(relato);
         }
-        
-        // GET: Relatos/Detalles/5
+
+        // GET: Podcasts/Detalles/5
         public async Task<IActionResult> DetallePodcast(int? id)
         {
+            //config
+            var config = (from c in _contextConfig.Config where c != null select c).DefaultIfEmpty().First();
+            ViewBag.config = config;
+
+            //podcasts
+            var podcasts = (from p in _contextPodcast.Podcast where p != null select p);
+            ViewBag.podcasts = podcasts;
+
             if (id == null)
             {
                 return NotFound();

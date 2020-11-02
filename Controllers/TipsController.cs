@@ -10,6 +10,7 @@ using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class TipsController : Controller
     {
         private readonly MvcTipContext _context;
@@ -196,3 +197,4 @@ namespace PortfolioCore.Controllers
         }
     }
 }
+

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MvcNoticia.Data;
+using PortfolioCore.Data;
 using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
@@ -83,7 +83,7 @@ namespace PortfolioCore.Controllers
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
-                
+
             }
             return View(noticia);
         }
@@ -198,3 +198,4 @@ namespace PortfolioCore.Controllers
         }
     }
 }
+

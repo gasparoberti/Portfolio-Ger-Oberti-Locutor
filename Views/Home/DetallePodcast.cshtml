@@ -23,7 +23,6 @@
         {
             <div class="col-sm-6">
                 <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Podcast" />
-                @*<img src="~/image/lacumbrecita1.jpg" class="img-fluid float-left" alt="Podcast" />*@
             </div>
             <div class="col-sm-6 text-justify">
                 @Html.Raw(Model.contenido)
@@ -37,7 +36,6 @@
 
             <div class="col-sm-6">
                 <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Podcast" />
-                @*<img src="~/image/lacumbrecita1.jpg" class="img-fluid float-left" alt="Podcast" />*@
             </div>
         }
 
@@ -55,6 +53,63 @@ else
     <div class="row text-justify m-1 mb-4">
         @Html.Raw(Model.contenido2)
     </div>
+}
+
+@if (ViewBag.podcasts != null)
+{
+    List<int> ids = new List<int>(); /*guardo los id para luego acceder a alguno diferente del model de manera random*/
+    Podcast n = null;
+    foreach (var item in ViewBag.podcasts)
+    {
+        ids.Add(item.id);
+    }
+
+    Random r = new Random();
+    IEnumerable<int> threeRandom = ids.OrderBy(x => r.Next()).Take(1);  /*toma uno al azar de todos los elementos de la lista*/
+
+    int id = @threeRandom.FirstOrDefault();
+
+    foreach (var item in ViewBag.podcasts)
+    {
+        if (item.id == id && id != Model.id)
+        {
+            n = item;
+        }
+    }
+
+    if (n != null)
+    {
+        <div class="card mb-3 mt-5">
+            <div class="row no-gutters">
+                @if (ViewBag.config != null)
+                {
+                    <div class="col-3">
+                        <img src="@("~/image/" + ViewBag.config.imagenCardPodcasts)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+                    </div>
+                    <div class="col-9">
+                        <div class="card-body">
+                            <h5 class="card-title">@n.titulo</h5>
+                            <p class="card-text">@Html.Raw(n.descripcion)</p>
+                            <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", n.fecha_alta))</small></p>
+                            <a asp-route-id="@n.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light">Leer más...</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col">
+                        <div class="card-body">
+                            <h5 class="card-title">@n.titulo</h5>
+                            <p class="card-text">@Html.Raw(n.descripcion)</p>
+                            <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", n.fecha_alta))</small></p>
+                            <a asp-route-id="@n.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light">Escuchar</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    }
 }
 
 <div class="row justify-content-center">

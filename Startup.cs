@@ -8,10 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-//using Microsoft.EntityFrameworkCore;
-using MvcNoticia.Data;
-using PortfolioCore.Data.Migrations;
-
 namespace PortfolioCore
 {
     public class Startup
@@ -36,19 +32,22 @@ namespace PortfolioCore
 
             services.AddDbContext<MvcNoticiaContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
-            services.AddDbContext<MvcRelatoContext>(options =>
+
+            services.AddDbContext<MvcPortfolioContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
-            services.AddDbContext<MvcTipContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
-            services.AddDbContext<MvcSobreMiContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+
             services.AddDbContext<MvcPodcastContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+
+            services.AddDbContext<MvcRelatoContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<MvcSobreMiContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<MvcTipContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDbContext<MvcConfigContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -56,8 +55,8 @@ namespace PortfolioCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            if (env.IsProduction())
+            if (env.IsDevelopment())
+            //if (env.IsProduction())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();

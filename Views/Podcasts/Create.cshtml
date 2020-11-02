@@ -14,7 +14,7 @@
 </p>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -24,8 +24,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="titulo" class="control-label"></label>
-                <input asp-for="titulo" class="form-control" />
+                <input asp-for="titulo" class="form-control" id="inputTitulo" onKeyUp="cantidadCaracteres()" />
                 <span asp-validation-for="titulo" class="text-danger"></span>
+                <label id="titulo" class="text-secondary"></label>
             </div>
             <div class="form-group">
                 <label asp-for="descripcion" class="control-label"></label>
@@ -61,7 +62,17 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="visible" /> @Html.DisplayNameFor(model => model.visible)
+                    <input class="form-check-input" asp-for="visibleI" /> @Html.DisplayNameFor(model => model.visibleI)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="contenido2" class="control-label"></label>
+                <textarea asp-for="contenido2" class="form-control"></textarea>
+                <span asp-validation-for="contenido2" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visibleC2" /> @Html.DisplayNameFor(model => model.visibleC2)
                 </label>
             </div>
             <div class="form-group">
@@ -74,6 +85,8 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script src="~/js/site.js"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

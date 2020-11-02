@@ -1,0 +1,64 @@
+﻿@model PortfolioCore.Models.Portfolio
+
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+<h1 class="display-4 text-center mb-4">@Model.titulo </h1>
+
+<div class="row mb-4 align-items-center">
+    @if (Model.descripcion == null)
+    {
+        <div align="center">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid" width="50%" alt="Noticia" />
+        </div>
+    }
+    else if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
+    {
+        <div class="col-sm-6">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Noticia" />
+        </div>
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Html.Raw(Model.descripcion)
+            </h5>
+        </div>
+    }
+    else if (Model.id % 2 != 0)
+    {
+        <div class="col-sm-6">
+            <h5 class="lead text-justify">
+                @Html.Raw(Model.descripcion)
+            </h5>
+        </div>
+
+        <div class="col-sm-6">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid float-right" alt="Noticia" />
+        </div>
+    }
+
+</div>
+
+
+<div class="row text-justify m-1 mb-3">
+    @Html.Raw(Model.contenido)
+</div>
+
+@if (Model.video != null && Model.visibleV != false)
+{
+    <div class="row justify-content-center m-1 mb-2">
+        <iframe width="492" height="277" class="embed-responsive-item" src="@Model.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+}
+
+@if (Model.contenido2 != null && Model.visibleC2 != false)
+{
+    <div class="row text-justify m-1 mt-3">
+        @Html.Raw(Model.contenido2)
+    </div>
+}
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

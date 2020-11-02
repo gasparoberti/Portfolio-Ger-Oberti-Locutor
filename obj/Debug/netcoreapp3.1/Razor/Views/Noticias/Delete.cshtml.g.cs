@@ -27,7 +27,7 @@ using PortfolioCore.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"48ec99aa5d785230c5503cb1bc39155bd44b83a2", @"/Views/Noticias/Delete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b8b34904a753c7f5b3be076bfb8e6ccf7119ae90", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0aaca5b8b4dcb7f80df12c1693e76f0e3653a40b", @"/Views/_ViewImports.cshtml")]
     public class Views_Noticias_Delete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PortfolioCore.Models.Noticia>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("style", new global::Microsoft.AspNetCore.Html.HtmlString("object-fit: cover; width: 20vw"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

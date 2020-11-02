@@ -1,0 +1,113 @@
+--los models tienen como maximo de caracteres 500 caracteres menos en desc y cont
+--para considerar de alguna manera los tags html que restan caracteres pero en el
+--contador de tiny no se consideran
+
+
+CREATE TABLE Noticia (
+    id          INT            AUTO_INCREMENT PRIMARY KEY,
+    titulo      VARCHAR (500)  NOT NULL,
+    descripcion VARCHAR (3000) NULL,
+    contenido   VARCHAR (5000) NOT NULL,
+    imagen      VARCHAR (500)  NOT NULL,
+    visible     BIT            NOT NULL,
+    fecha_alta  DATETIME       NOT NULL,
+    contenido2  VARCHAR (5000) NULL,
+    video       VARCHAR (1000)  NULL,
+    visibleV    BIT            NOT NULL,
+    visibleC2   BIT            NOT NULL
+);
+
+CREATE TABLE Portfolio (
+    id          INT            AUTO_INCREMENT PRIMARY KEY,
+    titulo      VARCHAR (500)  NOT NULL,
+    descripcion VARCHAR (3000) NULL,
+    contenido   VARCHAR (5000) NOT NULL,
+    imagen      VARCHAR (500)  NOT NULL,
+    visible     BIT            NOT NULL,
+    fecha_alta  DATETIME       NOT NULL,
+    prioridad   INT            NOT NULL,
+    video       VARCHAR (1000)  NULL,
+    contenido2  VARCHAR (5000) NULL,
+    visibleV    BIT            NOT NULL,
+    visibleC2   BIT            NOT NULL
+);
+
+CREATE TABLE Podcast (
+    id          INT            AUTO_INCREMENT PRIMARY KEY,
+    url         VARCHAR (1000)  NOT NULL,
+    titulo      VARCHAR (500)  NOT NULL,
+    descripcion VARCHAR (3000) NULL,
+    contenido   VARCHAR (5000) NOT NULL,
+    visible     BIT            NOT NULL,
+    fecha_alta  DATETIME       NOT NULL,
+    prioridad   INT            NOT NULL,
+    visibleI    BIT            NOT NULL,
+    visibleC2   BIT            NOT NULL,
+    imagen      VARCHAR (500)  NULL,
+    contenido2  VARCHAR (5000) NULL
+);
+
+CREATE TABLE Relato (
+    id          INT            AUTO_INCREMENT PRIMARY KEY,
+    url         VARCHAR (1000)  NOT NULL,
+    titulo      VARCHAR (500)  NOT NULL,
+    descripcion VARCHAR (3000) NULL,
+    contenido   VARCHAR (5000) NOT NULL,
+    visible     BIT            NOT NULL,
+    fecha_alta  DATETIME       NOT NULL,
+    prioridad   INT            NOT NULL
+);
+
+CREATE TABLE SobreMi (
+    id          INT            AUTO_INCREMENT PRIMARY KEY,
+    titulo      VARCHAR (500)  NOT NULL,
+    descripcion VARCHAR (3000) NOT NULL,
+    contenido   VARCHAR (5000) NULL,
+    imagen      VARCHAR (500)  NOT NULL,
+    visible     BIT            NOT NULL,
+    prioridad   INT            NOT NULL
+);
+
+CREATE TABLE Tip (
+    id          INT            AUTO_INCREMENT PRIMARY KEY,
+    titulo      VARCHAR (500)  NOT NULL,
+    descripcion VARCHAR (3000) NULL,
+    contenido   VARCHAR (5000) NOT NULL,
+    imagen      VARCHAR (500)  NOT NULL,
+    visible     BIT            NOT NULL,
+    fecha_alta  DATETIME       NOT NULL,
+    prioridad   INT            NOT NULL,
+    video       VARCHAR (1000)  NULL,
+    contenido2  VARCHAR (5000) NULL,
+    visibleV    BIT            NOT NULL,
+    visibleC2   BIT            NOT NULL
+);
+
+CREATE TABLE Config (
+    id                 INT           AUTO_INCREMENT PRIMARY KEY,
+    imagen1Home        VARCHAR (500) NOT NULL,
+    imagen2Home        VARCHAR (500) NULL,
+    imagen3Home        VARCHAR (500) NULL,
+    videoSobreMi       VARCHAR (1000) NULL,
+    imagenRelatos      VARCHAR (500) NULL,
+    imagenPortfolio    VARCHAR (500) NULL,
+    imagenCardRelatos  VARCHAR (500) NULL,
+    imagenPodcasts     VARCHAR (500) NULL,
+    imagenCardPodcasts VARCHAR (500) NOT NULL,
+    imagenTips         VARCHAR (500) NULL,
+    fecha_alta         DATETIME      NOT NULL,
+    visibleV           BIT           NULL, 
+    visibleR           BIT           NULL,
+    visibleP         BIT           NOT NULL,
+    visiblePorf         BIT           NOT NULL,
+    visibleT           BIT           NOT NULL,
+    visibleH2          BIT           NOT NULL,
+    visibleH3          BIT           NOT NULL
+);
+
+
+
+
+
+
+
