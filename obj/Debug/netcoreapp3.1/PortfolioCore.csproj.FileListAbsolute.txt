@@ -215,3 +215,17 @@ D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Con
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Configs\Index.cshtml.g.cs
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\PortfolioCore.csprojAssemblyReference.cache
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Noticias.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
