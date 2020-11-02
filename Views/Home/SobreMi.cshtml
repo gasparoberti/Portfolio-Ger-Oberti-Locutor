@@ -4,7 +4,8 @@
     ViewData["Title"] = "SobreMi";
 }
 
-@if (ViewBag.config.videoSobreMi != null
+@if (ViewBag.config != null
+    && ViewBag.config.videoSobreMi != null
     && ViewBag.config.visibleV == true)
 {
 <div class="embed-responsive embed-responsive-21by9">
