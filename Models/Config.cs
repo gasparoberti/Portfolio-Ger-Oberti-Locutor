@@ -62,6 +62,14 @@ namespace PortfolioCore.Models
         public bool visibleH3 { get; set; }
 
 
+        [StringLength(1000, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
+        [Display(Name = "URL Video Sobre Mi")]
+        public string videoSobreMi { get; set; }
+
+        [Display(Name = "Visible")]
+        public bool visibleV { get; set; }
+
+
         [Display(Name = "Imagen Portada Relatos")]
         public string imagenRelatos { get; set; }
 
@@ -93,5 +101,17 @@ namespace PortfolioCore.Models
 
         [Display(Name = "Visible")]
         public bool visibleT { get; set; }
+
+
+        [Display(Name = "Imagen Portada Portfolio")]
+        public string imagenPortfolio { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Imagen Portada Portfolio")]
+        public IFormFile archivoimagenPortfolio { get; set; }
+
+        [Display(Name = "Visible")]
+        public bool visiblePorf { get; set; }
     }
 }
+

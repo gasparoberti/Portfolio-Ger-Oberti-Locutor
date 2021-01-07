@@ -27,13 +27,13 @@
             @Html.DisplayNameFor(model => model.descripcion)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.descripcion)
+            @Html.Raw(Model.descripcion)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.contenido)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.contenido)
+            @Html.Raw(Model.contenido)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.visible)

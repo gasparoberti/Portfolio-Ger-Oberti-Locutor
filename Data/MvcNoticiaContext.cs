@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PortfolioCore.Models;
 
-namespace MvcNoticia.Data
+namespace PortfolioCore.Data
 {
     public class MvcNoticiaContext : DbContext
     {
-        public MvcNoticiaContext (DbContextOptions<MvcNoticiaContext> options)
+        public MvcNoticiaContext(DbContextOptions<MvcNoticiaContext> options)
             : base(options)
         {
         }

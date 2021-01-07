@@ -7,6 +7,7 @@ using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class RelatosController : Controller
     {
         private readonly MvcRelatoContext _context;
@@ -148,3 +149,4 @@ namespace PortfolioCore.Controllers
         }
     }
 }
+

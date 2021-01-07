@@ -15,16 +15,17 @@
 </p>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="id" />
             <input type="hidden" asp-for="imagen1Home" />
             <input type="hidden" asp-for="imagen2Home" />
             <input type="hidden" asp-for="imagen3Home" />
-            <input type="hidden" asp-for="imagenCardRelatos" />
+            @*<input type="hidden" asp-for="imagenCardRelatos" />*@
             <input type="hidden" asp-for="imagenCardPodcasts" />
-            <input type="hidden" asp-for="imagenRelatos" />
+            @*<input type="hidden" asp-for="imagenRelatos" />*@
+            <input type="hidden" asp-for="imagenPortfolio" />
             <input type="hidden" asp-for="imagenPodcasts" />
             <input type="hidden" asp-for="imagenTips" />
             <div class="form-group">
@@ -33,12 +34,12 @@
                 <span asp-validation-for="archivoImagen1Home" class="text-danger"></span>
                 <img src="@("~/image/" + Model.imagen1Home)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
             </div>
-            <div class="form-group">
-                <label asp-for="archivoImagenCardRelatos" class="control-label"></label>
-                <input asp-for="archivoImagenCardRelatos" accept="image/*" />
-                <span asp-validation-for="archivoImagenCardRelatos" class="text-danger"></span>
-                <img src="@("~/image/" + Model.imagenCardRelatos)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
-            </div>
+            @*<div class="form-group">
+            <label asp-for="archivoImagenCardRelatos" class="control-label"></label>
+            <input asp-for="archivoImagenCardRelatos" accept="image/*" />
+            <span asp-validation-for="archivoImagenCardRelatos" class="text-danger"></span>
+            <img src="@("~/image/" + Model.imagenCardRelatos)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+        </div>*@
             <div class="form-group">
                 <label asp-for="archivoImagenCardPodcasts" class="control-label"></label>
                 <input asp-for="archivoImagenCardPodcasts" accept="image/*" />
@@ -73,14 +74,35 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="archivoImagenRelatos" class="control-label"></label>
-                <input asp-for="archivoImagenRelatos" accept="image/*" />
-                <span asp-validation-for="archivoImagenRelatos" class="text-danger"></span>
-                <img id="" src="@("~/image/" + Model.imagenRelatos)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+                <label asp-for="videoSobreMi" class="control-label"></label>
+                <input asp-for="videoSobreMi" class="form-control" />
+                <span asp-validation-for="videoSobreMi" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="visibleR" /> @Html.DisplayNameFor(model => model.visibleR)
+                    <input class="form-check-input" asp-for="visibleV" /> @Html.DisplayNameFor(model => model.visibleV)
+                </label>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="archivoImagenRelatos" class="control-label"></label>
+            <input asp-for="archivoImagenRelatos" accept="image/*" />
+            <span asp-validation-for="archivoImagenRelatos" class="text-danger"></span>
+            <img id="" src="@("~/image/" + Model.imagenRelatos)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="visibleR" /> @Html.DisplayNameFor(model => model.visibleR)
+            </label>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="archivoimagenPortfolio" class="control-label"></label>
+            <input asp-for="archivoimagenPortfolio" accept="image/*" />
+            <span asp-validation-for="archivoimagenPortfolio" class="text-danger"></span>
+            <img id="" src="@("~/image/" + Model.imagenPortfolio)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
+        </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="visiblePorf" /> @Html.DisplayNameFor(model => model.visiblePorf)
                 </label>
             </div>
             <div class="form-group">

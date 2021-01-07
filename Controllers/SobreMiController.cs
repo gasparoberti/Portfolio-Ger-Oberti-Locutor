@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MvcNoticia.Data;
 using PortfolioCore.Data;
 using PortfolioCore.Models;
 
@@ -58,7 +57,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,descripcion,contenido,archivoImagen,visible,prioridad")] SobreMi sobreMi)
+        public async Task<IActionResult> Create([Bind("id,titulo,descripcion,contenido,archivoImagen,visible,prioridad")] SobreMi sobreMi)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +108,7 @@ namespace PortfolioCore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,descripcion,contenido,imagen,visible,prioridad,archivoImagen")] SobreMi sobreMi)
+        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,descripcion,contenido,imagen,visible,prioridad,archivoImagen")] SobreMi sobreMi)
         {
             if (id != sobreMi.id)
             {

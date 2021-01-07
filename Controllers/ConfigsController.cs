@@ -46,6 +46,9 @@ namespace PortfolioCore.Controllers
             "archivoImagen3Home,visibleH3," +
             "archivoImagenRelatos,visibleR," +
             "archivoImagenCardRelatos," +
+            "archivoimagenPortfolio,visiblePorf," +
+            "videoSobreMi," +
+            "visibleV," +
             "archivoImagenPodcasts,visibleP," +
             "archivoImagenCardPodcasts," +
             "imagenTips,archivoImagenTips,visibleT," +
@@ -53,8 +56,8 @@ namespace PortfolioCore.Controllers
             "fecha_alta"
             )] Config config)
         {
-            if (config.archivoImagen1Home == null 
-                || config.archivoImagenCardRelatos == null 
+            if (config.archivoImagen1Home == null
+                //|| config.archivoImagenCardRelatos == null
                 || config.archivoImagenCardPodcasts == null
                 )
             {
@@ -62,12 +65,7 @@ namespace PortfolioCore.Controllers
                 {
                     ModelState.AddModelError("archivoImagen1Home", "Imagen 1 es un campo requerido.");
                 }
-                
-                if (config.archivoImagenCardRelatos == null)
-                {
-                    ModelState.AddModelError("archivoImagenCardRelatos", "Imagen Card Relatos es un campo requerido.");
-                }
-                
+
                 if (config.archivoImagenCardPodcasts == null)
                 {
                     ModelState.AddModelError("archivoImagenCardPodcasts", "Imagen Card Podcasts es un campo requerido.");
@@ -76,7 +74,7 @@ namespace PortfolioCore.Controllers
                 if ((config.archivoImagen1Home == null && config.archivoImagen2Home != null)
                 || (config.archivoImagen1Home == null && config.archivoImagen3Home != null)
                 || (config.archivoImagen1Home == null && config.archivoImagen2Home != null && config.archivoImagen3Home != null)
-                ) 
+                )
                 {
                     ModelState.AddModelError("archivoImagen1Home", "Campo requerido.");
                     ModelState.AddModelError("archivoImagen2Home", "No se puede cargar esta imagen sin cargar la primera.");
@@ -87,7 +85,7 @@ namespace PortfolioCore.Controllers
             {
                 //guarda la imagen en wwwroot/image
                 string wwwRootPath = _hostEnvironment.WebRootPath;
-                
+
                 string fileName = "archivoImagen1Home";
                 string extension = Path.GetExtension(config.archivoImagen1Home.FileName);
                 config.imagen1Home = fileName += extension;
@@ -98,7 +96,7 @@ namespace PortfolioCore.Controllers
                     await config.archivoImagen1Home.CopyToAsync(fileStream);
                 }
 
-                if (config.archivoImagen2Home != null)
+                if (config.archivoImagen2Home != null && config.visibleH2 == true)
                 {
                     string fileName2 = "archivoImagen2Home";
                     string extension2 = Path.GetExtension(config.archivoImagen2Home.FileName);
@@ -110,8 +108,8 @@ namespace PortfolioCore.Controllers
                         await config.archivoImagen2Home.CopyToAsync(fileStream);
                     }
                 }
-                
-                if (config.archivoImagen3Home != null)
+
+                if (config.archivoImagen3Home != null && config.visibleH3 == true)
                 {
                     string fileName3 = "archivoImagen3Home";
                     string extension3 = Path.GetExtension(config.archivoImagen3Home.FileName);
@@ -123,20 +121,8 @@ namespace PortfolioCore.Controllers
                         await config.archivoImagen3Home.CopyToAsync(fileStream);
                     }
                 }
-                
-                if (config.archivoImagenCardRelatos != null)
-                {
-                    string fileNameCR = "archivoImagenCardRelatos";
-                    string extensionCR = Path.GetExtension(config.archivoImagenCardRelatos.FileName);
-                    config.imagenCardRelatos = fileNameCR += extensionCR;
-                    string pathCR = Path.Combine(wwwRootPath + "/image/", fileNameCR);
 
-                    using (var fileStream = new FileStream(pathCR, FileMode.Create))
-                    {
-                        await config.archivoImagenCardRelatos.CopyToAsync(fileStream);
-                    }
-                }
-                
+
                 if (config.archivoImagenCardPodcasts != null)
                 {
                     string fileNameCP = "archivoImagenCardPodcasts";
@@ -149,21 +135,22 @@ namespace PortfolioCore.Controllers
                         await config.archivoImagenCardPodcasts.CopyToAsync(fileStream);
                     }
                 }
+
                 
-                if (config.archivoImagenRelatos != null)
+                if (config.archivoimagenPortfolio != null && config.visiblePorf == true)
                 {
-                    string fileNameR = "archivoImagenRelatos";
-                    string extensionR = Path.GetExtension(config.archivoImagenRelatos.FileName);
-                    config.imagenRelatos = fileNameR += extensionR;
+                    string fileNameR = "archivoimagenPortfolio";
+                    string extensionR = Path.GetExtension(config.archivoimagenPortfolio.FileName);
+                    config.imagenPortfolio = fileNameR += extensionR;
                     string pathR = Path.Combine(wwwRootPath + "/image/", fileNameR);
 
                     using (var fileStream = new FileStream(pathR, FileMode.Create))
                     {
-                        await config.archivoImagenRelatos.CopyToAsync(fileStream);
+                        await config.archivoimagenPortfolio.CopyToAsync(fileStream);
                     }
                 }
-                
-                if (config.archivoImagenPodcasts != null)
+
+                if (config.archivoImagenPodcasts != null && config.visibleP == true)
                 {
                     string fileNameP = "archivoImagenPodcasts";
                     string extensionP = Path.GetExtension(config.archivoImagenPodcasts.FileName);
@@ -176,7 +163,7 @@ namespace PortfolioCore.Controllers
                     }
                 }
 
-                if (config.archivoImagenTips != null)
+                if (config.archivoImagenTips != null && config.visibleT == true)
                 {
                     string fileNameT = "archivoImagenTips";
                     string extensionT = Path.GetExtension(config.archivoImagenTips.FileName);
@@ -223,7 +210,10 @@ namespace PortfolioCore.Controllers
             "imagen2Home,archivoImagen2Home,visibleH2," +
             "imagen3Home,archivoImagen3Home,visibleH3," +
             "imagenRelatos,archivoImagenRelatos,visibleR," +
+            "imagenPortfolio,archivoimagenPortfolio,visiblePorf," +
             "imagenCardRelatos,archivoImagenCardRelatos," +
+            "videoSobreMi," +
+            "visibleV," +
             "imagenPodcasts,archivoImagenPodcasts,visibleP," +
             "imagenCardPodcasts,archivoImagenCardPodcasts," +
             "imagenTips,archivoImagenTips,visibleT," +
@@ -241,7 +231,7 @@ namespace PortfolioCore.Controllers
                 try
                 {
                     string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string path, path2, path3, pathCR, pathCP, pathR, pathP, pathT = null;
+                    string path, path2, path3, pathCP, pathR, pathP, pathT = null;
 
                     if (config.archivoImagen1Home != null)
                     {
@@ -256,7 +246,7 @@ namespace PortfolioCore.Controllers
                         }
                     }
 
-                    if (config.archivoImagen2Home != null)
+                    if (config.archivoImagen2Home != null && config.visibleH2 == true)
                     {
                         string fileName2 = "archivoImagen2Home";
                         string extension2 = Path.GetExtension(config.archivoImagen2Home.FileName);
@@ -268,8 +258,18 @@ namespace PortfolioCore.Controllers
                             await config.archivoImagen2Home.CopyToAsync(fileStream);
                         }
                     }
-                    
-                    if (config.archivoImagen3Home != null)
+                    else if (config.imagen2Home != null && config.visibleH2 == false)
+                    {
+                        //borra imagen de wwwroot/image
+                        path2 = Path.Combine(_hostEnvironment.WebRootPath, "image", config.imagen2Home);
+                        if (System.IO.File.Exists(path2))
+                        {
+                            System.IO.File.Delete(path2);
+                        }
+                    }
+
+
+                    if (config.archivoImagen3Home != null && config.visibleH3 == true)
                     {
                         string fileName3 = "archivoImagen3Home";
                         string extension3 = Path.GetExtension(config.archivoImagen3Home.FileName);
@@ -281,20 +281,17 @@ namespace PortfolioCore.Controllers
                             await config.archivoImagen3Home.CopyToAsync(fileStream);
                         }
                     }
-                    
-                    if (config.archivoImagenCardRelatos != null)
+                    else if (config.imagen3Home != null && config.visibleH3 == false)
                     {
-                        string fileNameCR = "archivoImagenCardRelatos";
-                        string extensionCR = Path.GetExtension(config.archivoImagenCardRelatos.FileName);
-                        config.imagenCardRelatos = fileNameCR += extensionCR;
-                        pathCR = Path.Combine(wwwRootPath + "/image/", fileNameCR);
-
-                        using (var fileStream = new FileStream(pathCR, FileMode.Create))
+                        //borra imagen de wwwroot/image
+                        path3 = Path.Combine(_hostEnvironment.WebRootPath, "image", config.imagen3Home);
+                        if (System.IO.File.Exists(path3))
                         {
-                            await config.archivoImagenCardRelatos.CopyToAsync(fileStream);
+                            System.IO.File.Delete(path3);
                         }
                     }
-                    
+
+
                     if (config.archivoImagenCardPodcasts != null)
                     {
                         string fileNameCP = "archivoImagenCardPodcasts";
@@ -307,21 +304,32 @@ namespace PortfolioCore.Controllers
                             await config.archivoImagenCardPodcasts.CopyToAsync(fileStream);
                         }
                     }
+
                     
-                    if (config.archivoImagenRelatos != null)
+                    if (config.archivoimagenPortfolio != null && config.visiblePorf == true)
                     {
-                        string fileNameR = "archivoImagenRelatos";
-                        string extensionR = Path.GetExtension(config.archivoImagenRelatos.FileName);
-                        config.imagenRelatos = fileNameR += extensionR;
+                        string fileNameR = "archivoimagenPortfolio";
+                        string extensionR = Path.GetExtension(config.archivoimagenPortfolio.FileName);
+                        config.imagenPortfolio = fileNameR += extensionR;
                         pathR = Path.Combine(wwwRootPath + "/image/", fileNameR);
 
                         using (var fileStream = new FileStream(pathR, FileMode.Create))
                         {
-                            await config.archivoImagenRelatos.CopyToAsync(fileStream);
+                            await config.archivoimagenPortfolio.CopyToAsync(fileStream);
                         }
                     }
-                    
-                    if (config.archivoImagenPodcasts != null)
+                    else if (config.imagenPortfolio != null && config.visiblePorf == false)
+                    {
+                        //borra imagen de wwwroot/image
+                        pathR = Path.Combine(_hostEnvironment.WebRootPath, "image", config.imagenPortfolio);
+                        if (System.IO.File.Exists(pathR))
+                        {
+                            System.IO.File.Delete(pathR);
+                        }
+                    }
+
+
+                    if (config.archivoImagenPodcasts != null && config.visibleP == true)
                     {
                         string fileNameP = "archivoImagenPodcasts";
                         string extensionP = Path.GetExtension(config.archivoImagenPodcasts.FileName);
@@ -333,8 +341,18 @@ namespace PortfolioCore.Controllers
                             await config.archivoImagenPodcasts.CopyToAsync(fileStream);
                         }
                     }
-                    
-                    if (config.archivoImagenTips != null)
+                    else if (config.imagenPodcasts != null && config.visibleP == false)
+                    {
+                        //borra imagen de wwwroot/image
+                        pathP = Path.Combine(_hostEnvironment.WebRootPath, "image", config.imagenPodcasts);
+                        if (System.IO.File.Exists(pathP))
+                        {
+                            System.IO.File.Delete(pathP);
+                        }
+                    }
+
+
+                    if (config.archivoImagenTips != null && config.visibleT == true)
                     {
                         string fileNameT = "archivoImagenTips";
                         string extensionT = Path.GetExtension(config.archivoImagenTips.FileName);
@@ -344,6 +362,15 @@ namespace PortfolioCore.Controllers
                         using (var fileStream = new FileStream(pathT, FileMode.Create))
                         {
                             await config.archivoImagenTips.CopyToAsync(fileStream);
+                        }
+                    }
+                    else if (config.imagenTips != null && config.visibleT == false)
+                    {
+                        //borra imagen de wwwroot/image
+                        pathT = Path.Combine(_hostEnvironment.WebRootPath, "image", config.imagenTips);
+                        if (System.IO.File.Exists(pathT))
+                        {
+                            System.IO.File.Delete(pathT);
                         }
                     }
 
@@ -372,3 +399,4 @@ namespace PortfolioCore.Controllers
         }
     }
 }
+

@@ -4,9 +4,26 @@
     ViewData["Title"] = "SobreMi";
 }
 
-    <div class="text-center mb-5">
-        <h1 class="display-4">Sobre Mí</h1>
-    </div>
+@if (ViewBag.config != null
+    && ViewBag.config.videoSobreMi != null
+    && ViewBag.config.visibleV == true)
+{
+<div class="embed-responsive embed-responsive-21by9">
+    <iframe class="embed-responsive-item" src=@(ViewBag.config.videoSobreMi + "?autoplay=1&controls=0&loop=1&rel=0&showinfo=0&disablekb=1") allow="autoplay"></iframe>
+</div>
+}
+
+@*autoplay=1 -> el video se reproduce automaticamente al cargar el reproductor. salvo en mozila que hay que poner play anda en todos si se agrega allow="autoplay"
+    controls=0 -> desaparecen los controles para adelantar, ver el progreso, poner en pantalla completa, etc.
+    loop=0 -> teoricamente reproduce una y otra vez el video si no hay una playlist cargada (no funciona)
+    rel=0 -> si esta en cero muestra videos relacionados al que se muestra. si esta en 1 se muestran sugerencias para la cuenta de yt que esta iniciada
+    showinfo=0 -> teoricamente no muestra el titulo y esa info del video (no funciona)
+    disablekb=1 -> desabilita los comandos de reproduccion por teclado. solo se puede pausar y reproducir presionando el video*@
+
+
+<div class="text-center mt-3 mb-5">
+    <h1 class="display-4">Sobre Mí</h1>
+</div>
 
 @{
     int indice = 1;
@@ -16,22 +33,28 @@
 {
     @if (@item.visible == true)
     {
-        <div class="row m-5 align-items-center">
+        <div class="text-center mb-3">
+            <h4>@item.titulo</h4>
+        </div>
+
+        <div class="row mb-5 align-items-center">
             @if (indice % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
             {
                 <div class="col-sm-4">
                     <img src="@("/image/" + item.imagen)" class="img-fluid float-left" alt="Image About" />
                 </div>
+
                 <div class="col-sm-8">
                     <h5 class="lead text-justify">
                         @Html.Raw(item.descripcion)
                         @if (item.contenido != null)
                         {
-                            <a data-toggle="collapse" 
-                               href="@("#collapse" + item.id.ToString())" 
-                               role="button" 
-                               aria-expanded="false" 
-                               aria-controls="collapseExample">Leer más...
+                            <a data-toggle="collapse"
+                               href="@("#collapse" + item.id.ToString())"
+                               role="button"
+                               aria-expanded="false"
+                               aria-controls="collapseExample">
+                                Leer más...
                             </a>
                         }
                     </h5>
@@ -44,11 +67,12 @@
                         @Html.Raw(item.descripcion)
                         @if (@item.contenido != null)
                         {
-                            <a data-toggle="collapse" 
-                               href="@("#collapse" + item.id.ToString())" 
-                               role="button" 
-                               aria-expanded="false" 
-                               aria-controls="collapseExample">Leer más...
+                            <a data-toggle="collapse"
+                               href="@("#collapse" + item.id.ToString())"
+                               role="button"
+                               aria-expanded="false"
+                               aria-controls="collapseExample">
+                                Leer más...
                             </a>
                         }
                     </h5>

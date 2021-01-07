@@ -19,12 +19,12 @@ namespace PortfolioCore.Models
         [Display(Name = "Titulo *")]
         public string titulo { get; set; }
 
-        [StringLength(1000, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
+        [StringLength(2500, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
         [Display(Name = "Descripción")]
         public string descripcion { get; set; }
 
         [Required(ErrorMessage = "{0} es un campo requerido.")]
-        [StringLength(3000, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
+        [StringLength(4500, ErrorMessage = "{0} debe tener una longitud de {1} caracteres como mínimo y {2} caracteres como máximo.", MinimumLength = 5)]
         [Display(Name = "Contenido *")]
         public string contenido { get; set; }
 
@@ -62,3 +62,4 @@ namespace PortfolioCore.Models
         public bool visibleC2 { get; set; }
     }
 }
+

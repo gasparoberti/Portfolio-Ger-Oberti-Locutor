@@ -10,6 +10,7 @@ using PortfolioCore.Models;
 
 namespace PortfolioCore.Controllers
 {
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class PodcastsController : Controller
     {
         private readonly MvcPodcastContext _context;
@@ -60,11 +61,7 @@ namespace PortfolioCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (podcast.archivoImagen == null)
-                {
-                    ModelState.AddModelError("archivoImagen", "Imagen es un campo requerido.");
-                }
-                else
+                if (podcast.archivoImagen != null)
                 {
                     //guarda la imagen en wwwroot/image
                     string wwwRootPath = _hostEnvironment.WebRootPath;
@@ -77,11 +74,17 @@ namespace PortfolioCore.Controllers
                     {
                         await podcast.archivoImagen.CopyToAsync(fileStream);
                     }
-
-                    _context.Add(podcast);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
                 }
+
+                if (podcast.archivoImagen == null && podcast.visibleI == true)
+                {
+                    podcast.visibleI = false;
+                }
+
+                _context.Add(podcast);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+                
             }
             return View(podcast);
         }
@@ -132,6 +135,12 @@ namespace PortfolioCore.Controllers
                         {
                             await podcast.archivoImagen.CopyToAsync(fileStream);
                         }
+                    }
+
+                    //para los opcionales hay que hacer esta verificacion por si se activa el check pero la imagen es nulla
+                    if (podcast.imagen == null && podcast.visibleI == true)
+                    {
+                        podcast.visibleI = false;
                     }
 
                     _context.Update(podcast);
@@ -188,3 +197,4 @@ namespace PortfolioCore.Controllers
         }
     }
 }
+

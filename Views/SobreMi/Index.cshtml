@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.descripcion)
+                @Html.DisplayNameFor(model => model.titulo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.imagen)
@@ -31,7 +31,7 @@
 @foreach (var item in Model.OrderBy(i => i.prioridad)) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
+                @Html.DisplayFor(modelItem => item.titulo)
             </td>
             <td>
                 <img src="@("~/image/" + item.imagen)" asp-append-version="true" style="object-fit: cover; width: 20vw" />

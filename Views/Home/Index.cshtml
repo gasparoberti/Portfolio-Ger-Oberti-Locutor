@@ -63,6 +63,30 @@ else if (ViewBag.config.imagen1Home != null
     </div>
 }
 
+else if (ViewBag.config.imagen1Home != null
+        && ViewBag.config.imagen3Home != null && ViewBag.config.visibleH3 != false
+        )
+{
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagen1Home)" asp-append-version="true" alt="First slide" style="object-fit: cover; width: 100%" />
+            </div>
+            <div class="carousel-item">
+                <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagen3Home)" asp-append-version="true" alt="Second slide" style="object-fit: cover; width: 100%" />
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+}
+
 else
 {
     <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagen1Home)" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
@@ -95,147 +119,157 @@ else
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
             indice++;
         }
     }
 </div>
 
+
 @*También te puede interesar...*@
-<div class="text-center m-5">
-    <h3>También te puede interesar...</h3>
-</div>
 
-<div class="row">
-    <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card">
-            @if (ViewBag.config == null)
-            {
-                if (User.Identity.IsAuthenticated)
+@*este condicional hace que si no existen al menos 3 publicaciones (una de cada una) entonces no muestra ni el titulo ni las cards*@
+@if (ViewBag.portfolio != null
+&& ViewBag.portfolio.visible
+&& ViewBag.podcast != null
+&& ViewBag.podcast.visible
+&& ViewBag.tip != null
+&& ViewBag.tip.visible)
+{
+    <div class="text-center m-5">
+        <h3>También te puede interesar...</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-6 mb-3">
+            <div class="card">
+                <img class="card-img-top" src="@("/image/" + ViewBag.portfolio.imagen)" alt="Card image portfolio" style="object-fit: cover">
+                <div class="card-body">
+                    <h5 class="card-title">@ViewBag.portfolio.titulo</h5>
+                    @*<p class="card-text">@item.descripcion</p>*@
+                    <p class="card-text"><small class="text-muted">#Portfolio</small></p>
+                    <div class="text-center">
+                        <a asp-route-id="@ViewBag.portfolio.id" asp-action="DetallePortfolio" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-3">
+            <div class="card">
+                @if (ViewBag.config == null)
                 {
-                    <p>Configure la card image para la miniatura de los relatos en la configuracion general.</p>
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <p>Configure la card image para la miniatura de los podcasts en la configuracion general.</p>
+                    }
                 }
-            }
-            else
-            {
-                <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardRelatos)" alt="Card image relatos" style="object-fit: cover">
-            }
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.relato.titulo</h5>
-                @*<p class="card-text">@item.descripcion</p>*@
-                <p class="card-text"><small class="text-muted">#Relatos</small></p>
-                <div class="text-center">
-                    <a asp-route-id="@ViewBag.relato.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card">
-            @if (ViewBag.config == null)
-            {
-                if (User.Identity.IsAuthenticated)
+                else
                 {
-                    <p>Configure la card image para la miniatura de los podcasts en la configuracion general.</p>
+                    <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardPodcasts)" alt="Card image podcasts" style="object-fit: cover">
                 }
-            }
-            else
-            {
-                <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardPodcasts)" alt="Card image podcasts" style="object-fit: cover">
-            }
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.podcast.titulo</h5>
-                @*<p class="card-text">@item.descripcion</p>*@
-                <p class="card-text"><small class="text-muted">#Podcasts</small></p>
-                <div class="text-center">
-                    <a asp-route-id="@ViewBag.podcast.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar</a>
+                <div class="card-body">
+                    <h5 class="card-title">@ViewBag.podcast.titulo</h5>
+                    @*<p class="card-text">@item.descripcion</p>*@
+                    <p class="card-text"><small class="text-muted">#Podcasts</small></p>
+                    <div class="text-center">
+                        <a asp-route-id="@ViewBag.podcast.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-3">
+            <div class="card">
+                <img class="card-img-top" src="@("/image/" + ViewBag.tip.imagen)" alt="Card image tips" style="object-fit: cover">
+                <div class="card-body">
+                    <h5 class="card-title">@ViewBag.tip.titulo</h5>
+                    @*<p class="card-text">@item.descripcion</p>*@
+                    <p class="card-text"><small class="text-muted">#Tips</small></p>
+                    <div class="text-center">
+                        <a asp-route-id="@ViewBag.tip.id" asp-action="DetalleTip" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+}
 
-    <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card">
-            <img class="card-img-top" src="@("/image/" + ViewBag.tip.imagen)" alt="Card image tips" style="object-fit: cover">
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.tip.titulo</h5>
-                @*<p class="card-text">@item.descripcion</p>*@
-                <p class="card-text"><small class="text-muted">#Tips</small></p>
-                <div class="text-center">
-                    <a asp-route-id="@ViewBag.tip.id" asp-action="DetalleTip" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+
+
+@*este condicional hace que si no existen al menos 3 publicaciones (una de cada una) entonces no muestra ni el titulo ni las cards*@
+@if (ViewBag.portfolioFav != null
+&& ViewBag.portfolioFav.visible
+&& ViewBag.podcastFab != null
+&& ViewBag.podcastFab.visible
+&& ViewBag.tipFab != null
+&& ViewBag.tipFab.visible)
+{
+    @*publicaciones favortias*@
+    @*este condicional hace que si las ultimas publicaciones (las3) son iguales a las favoritas entonces no muestra las favoritas porque quedaría
+        dos veces lo mismo. Por lo tanto si una de las 3 es diferente ahí recién muestra las publicaciones favoritas*@
+
+    @if (ViewBag.portfolioFav.id != ViewBag.portfolio.id ||
+     ViewBag.podcastFab.id != ViewBag.podcast.id ||
+     ViewBag.tipFab.id != ViewBag.tip.id)
+    {
+        <div class="text-center m-5">
+            <h3>Mis publicaciones favoritas...</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="@("/image/" + ViewBag.portfolioFav.imagen)" alt="Card image portfolio" style="object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title">@ViewBag.portfolioFav.titulo</h5>
+                        @*<p class="card-text">@item.descripcion</p>*@
+                        <p class="card-text"><small class="text-muted">#Portfolio</small></p>
+                        <div class="text-center">
+                            <a asp-route-id="@ViewBag.portfolioFav.id" asp-action="DetallePortfolio" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card">
+                    @if (ViewBag.config == null)
+                    {
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <p>Configure la card image para la miniatura de los podcasts en la configuracion general.</p>
+                        }
+                    }
+                    else
+                    {
+                        <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardPodcasts)" alt="Card image podcasts" style="object-fit: cover">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@ViewBag.podcastFab.titulo</h5>
+                        @*<p class="card-text">@item.descripcion</p>*@
+                        <p class="card-text"><small class="text-muted">#Podcasts</small></p>
+                        <div class="text-center">
+                            <a asp-route-id="@ViewBag.podcastFab.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="@("/image/" + ViewBag.tipFab.imagen)" alt="Card image tips" style="object-fit: cover">
+                    <div class="card-body">
+                        <h5 class="card-title">@ViewBag.tipFab.titulo</h5>
+                        @*<p class="card-text">@item.descripcion</p>*@
+                        <p class="card-text"><small class="text-muted">#Tips</small></p>
+                        <div class="text-center">
+                            <a asp-route-id="@ViewBag.tipFab.id" asp-action="DetalleTip" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-@*publicaciones favortias*@
-<div class="text-center m-5">
-    <h3>Mis publicaciones favoritas...</h3>
-</div>
-
-<div class="row">
-    <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card">
-            @if (ViewBag.config == null)
-            {
-                if (User.Identity.IsAuthenticated)
-                {
-                    <p>Configure la card image para la miniatura de los relatos en la configuracion general.</p>
-                }
-            }
-            else
-            {
-                <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardRelatos)" alt="Card image relatos" style="object-fit: cover">
-            }
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.relatoFav.titulo</h5>
-                @*<p class="card-text">@item.descripcion</p>*@
-                <p class="card-text"><small class="text-muted">#Relatos</small></p>
-                <div class="text-center">
-                    <a asp-route-id="@ViewBag.relatoFav.id" asp-action="DetalleRelato" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card">
-            @if (ViewBag.config == null)
-            {
-                if (User.Identity.IsAuthenticated)
-                {
-                    <p>Configure la card image para la miniatura de los podcasts en la configuracion general.</p>
-                }
-            }
-            else
-            {
-                <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardPodcasts)" alt="Card image podcasts" style="object-fit: cover">
-            }
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.podcastFab.titulo</h5>
-                @*<p class="card-text">@item.descripcion</p>*@
-                <p class="card-text"><small class="text-muted">#Podcasts</small></p>
-                <div class="text-center">
-                    <a asp-route-id="@ViewBag.podcastFab.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light btn-block">Escuchar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card">
-            <img class="card-img-top" src="@("/image/" + ViewBag.tipFab.imagen)" alt="Card image tips" style="object-fit: cover">
-            <div class="card-body">
-                <h5 class="card-title">@ViewBag.tipFab.titulo</h5>
-                @*<p class="card-text">@item.descripcion</p>*@
-                <p class="card-text"><small class="text-muted">#Tips</small></p>
-                <div class="text-center">
-                    <a asp-route-id="@ViewBag.tipFab.id" asp-action="DetalleTip" asp-controller="Home" class="btn btn-light btn-block">Leer más...</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    }
+}
 

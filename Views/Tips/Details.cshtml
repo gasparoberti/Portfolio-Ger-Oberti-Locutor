@@ -7,7 +7,13 @@
 <h1 class="display-4 text-center mb-4">@Model.titulo </h1>
 
 <div class="row mb-4 align-items-center">
-    @if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
+    @if (Model.descripcion == null)
+    {
+        <div align="center">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid" width="50%" alt="Noticia" />
+        </div>
+    }
+    else if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
     {
         <div class="col-sm-6">
             <img src="@("/image/" + Model.imagen)" class="img-fluid float-left" alt="Noticia" />
@@ -18,7 +24,7 @@
             </h5>
         </div>
     }
-    else
+    else if (Model.id % 2 != 0)
     {
         <div class="col-sm-6">
             <h5 class="lead text-justify">
