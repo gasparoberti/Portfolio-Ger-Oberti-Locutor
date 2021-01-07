@@ -1,9 +1,6 @@
 D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\package-lock.json
-D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
-D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
 D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\PortfolioCore.StaticWebAssets.xml
 D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\PortfolioCore.exe
 D:\Documentos\Proyectos\c#\PortfolioCore\bin\Debug\netcoreapp3.1\PortfolioCore.deps.json
@@ -237,3 +234,4 @@ D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Por
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Portfolios\Edit.cshtml.g.cs
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Portfolios\Index.cshtml.g.cs
 D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\Documentos\Proyectos\c#\PortfolioCore\obj\Debug\netcoreapp3.1\scopedcss\bundle\PortfolioCore.styles.css
