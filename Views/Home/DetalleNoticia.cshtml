@@ -81,22 +81,6 @@
 
     if (n != null)
     {
-        @*<div class="card mb-3 mt-5">
-            <div class="row no-gutters">
-                <div class="col-3">
-                    <img src="@("~/image/" + n.imagen)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
-                </div>
-                <div class="col-9">
-                    <div class="card-body">
-                        <h5 class="card-title">@n.titulo</h5>
-                        <p class="card-text">@Html.Raw(n.descripcion)</p>
-                        <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", n.fecha_alta))</small></p>
-                        <a asp-route-id="@n.id" asp-action="DetalleNoticia" asp-controller="Home" class="btn btn-light">Leer más...</a>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
         <div class="card text-center mb-3 mt-5">
             <div class="card-body">
                 <h5 class="card-title">@n.titulo</h5>
