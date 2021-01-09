@@ -88,7 +88,7 @@
                     {
                         <p class="card-text">@Html.Raw(p.descripcion)</p>
                     }*@
-                <a asp-route-id="@p.id" asp-action="DetalleNoticia" asp-controller="Home" class="btn btn-light">Leer más...</a>
+                <a asp-route-id="@p.id" asp-action="DetallePortfolio" asp-controller="Home" class="btn btn-light">Leer más...</a>
             </div>
             <div class="card-footer text-muted">
                 <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", p.fecha_alta))</small></p>

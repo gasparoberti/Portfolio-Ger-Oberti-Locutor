@@ -79,34 +79,17 @@ else
 
     if (n != null)
     {
-        <div class="card mb-3 mt-5">
-            <div class="row no-gutters">
-                @if (ViewBag.config != null)
-                {
-                    <div class="col-3">
-                        <img src="@("~/image/" + ViewBag.config.imagenCardPodcasts)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
-                    </div>
-                    <div class="col-9">
-                        <div class="card-body">
-                            <h5 class="card-title">@n.titulo</h5>
-                            <p class="card-text">@Html.Raw(n.descripcion)</p>
-                            <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", n.fecha_alta))</small></p>
-                            <a asp-route-id="@n.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light">Leer más...</a>
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="col">
-                        <div class="card-body">
-                            <h5 class="card-title">@n.titulo</h5>
-                            <p class="card-text">@Html.Raw(n.descripcion)</p>
-                            <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", n.fecha_alta))</small></p>
-                            <a asp-route-id="@n.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light">Escuchar</a>
-                        </div>
-                    </div>
-                }
-
+        <div class="card text-center mb-3 mt-5">
+            <div class="card-body">
+                <h5 class="card-title">@n.titulo</h5>
+                @*@if (n.descripcion != null)
+                    {
+                        <p class="card-text">@Html.Raw(n.descripcion)</p>
+                    }*@
+                <a asp-route-id="@n.id" asp-action="DetallePodcast" asp-controller="Home" class="btn btn-light">Escuchar</a>
+            </div>
+            <div class="card-footer text-muted">
+                <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", n.fecha_alta))</small></p>
             </div>
         </div>
     }
