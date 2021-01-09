@@ -8882,11 +8882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documentos\\Proyectos\\c#\\PortfolioCore\\PortfolioCore.csproj",
+      "projectUniqueName": "D:\\Documentos\\Proyectos\\c#\\Portfolio Ger Github\\PortfolioCore\\PortfolioCore.csproj",
       "projectName": "PortfolioCore",
-      "projectPath": "D:\\Documentos\\Proyectos\\c#\\PortfolioCore\\PortfolioCore.csproj",
+      "projectPath": "D:\\Documentos\\Proyectos\\c#\\Portfolio Ger Github\\PortfolioCore\\PortfolioCore.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "D:\\Documentos\\Proyectos\\c#\\PortfolioCore\\obj\\",
+      "outputPath": "D:\\Documentos\\Proyectos\\c#\\Portfolio Ger Github\\PortfolioCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

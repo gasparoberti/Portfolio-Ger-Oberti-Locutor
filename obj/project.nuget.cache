@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ybISjEyns3GatgdNWKr1QanIP8NEaYWP8l0paYSA3H8crv1VF+EOuwNSRL2JwdzJso9N6td/fMOM03TOsWk5nA==",
+  "dgSpecHash": "A/Ciu/p+tP/RLpBlrn0fJ+mCuOeLp0lv+dHswtO7lVyTNzo6iW1PEqJR0FSzi/3WF2Mgav4QyOLFD8h4Hbascg==",
   "success": true,
-  "projectFilePath": "D:\\Documentos\\Proyectos\\c#\\PortfolioCore\\PortfolioCore.csproj",
+  "projectFilePath": "D:\\Documentos\\Proyectos\\c#\\Portfolio Ger Github\\PortfolioCore\\PortfolioCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.4\\microsoft.aspnetcore.cryptography.internal.3.1.4.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.4\\microsoft.aspnetcore.cryptography.keyderivation.3.1.4.nupkg.sha512",
