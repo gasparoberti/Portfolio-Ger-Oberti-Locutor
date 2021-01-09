@@ -4,13 +4,31 @@
     ViewData["Title"] = "Portfolio";
 }
 
-@if (ViewBag.config != null
-     && ViewBag.config.imagenPortfolio != null
-     && ViewBag.config.visiblePorf == true
-     )
+@*funcion para acortar los strings y agregarle ... si i=1 asumo que es un titulo, si i=2 una descripcion*@
+@functions {
+    public string acortarTitulo(string s)
     {
-        <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagenPortfolio)" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
+        string ss = s;
+
+        if (s != null && s.Length >= 28)
+        {
+            //descripcion
+            ss = ss.Substring(0, 28);
+            ss += "...";
+        }
+
+        return ss;
+        //return "Hello";
     }
+}
+
+@if (ViewBag.config != null
+    && ViewBag.config.imagenPortfolio != null
+    && ViewBag.config.visiblePorf == true
+    )
+{
+    <img class="img-fluid mb-3" src="@("/image/" + ViewBag.config.imagenPortfolio)" asp-append-version="true" alt="Home image" style="object-fit: cover; width: 100%" />
+}
 
 <div class="text-center mb-5">
     <h1 class="display-4">Portfolio</h1>
@@ -25,7 +43,7 @@
                 <div class="card">
                     <img class="card-img-top" src="@("/image/" + item.imagen)" alt="Card image" style="object-fit: cover">
                     <div class="card-body">
-                        <h5 class="card-title">@item.titulo</h5>
+                        <h5 class="card-title">@acortarTitulo(item.titulo)</h5>
                         @*<p class="card-text">@item.descripcion</p>*@
                         <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
                         <div class="text-center">
