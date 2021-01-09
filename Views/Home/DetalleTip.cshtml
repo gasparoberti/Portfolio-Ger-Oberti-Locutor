@@ -9,8 +9,8 @@
 <div class="row mb-4 align-items-center">
     @if (Model.descripcion == null)
     {
-        <div align="center">
-            <img src="@("/image/" + Model.imagen)" class="img-fluid" width="50%" alt="Noticia" />
+        <div class="col-sm" align="center">
+            <img src="@("/image/" + Model.imagen)" class="img-fluid" style="object-fit: cover; height: 40vh" alt="Noticia" />
         </div>
     }
     else if (Model.id % 2 == 0)   //si es par pone la imagen a la izq y el texto a la der
@@ -40,7 +40,7 @@
 </div>
 
 
-<div class="row text-justify m-1 mb-3">
+<div class="row text-justify m-1">
     @Html.Raw(Model.contenido)
 </div>
 
@@ -53,7 +53,7 @@
 
 @if (Model.contenido2 != null && Model.visibleC2 != false)
 {
-    <div class="row text-justify m-1 mt-3">
+    <div class="row text-justify m-1">
         @Html.Raw(Model.contenido2)
     </div>
 }
@@ -82,19 +82,17 @@
 
     if (n != null)
     {
-        <div class="card mb-3 mt-5">
-            <div class="row no-gutters">
-                <div class="col-3">
-                    <img src="@("~/image/" + n.imagen)" asp-append-version="true" style="object-fit: cover; width: 20vw" />
-                </div>
-                <div class="col-9">
-                    <div class="card-body">
-                        <h5 class="card-title">@n.titulo</h5>
+        <div class="card text-center mb-3 mt-5">
+            <div class="card-body">
+                <h5 class="card-title">@n.titulo</h5>
+                @*@if (n.descripcion != null)
+                    {
                         <p class="card-text">@Html.Raw(n.descripcion)</p>
-                        <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", n.fecha_alta))</small></p>
-                        <a asp-route-id="@n.id" asp-action="DetalleTip" asp-controller="Home" class="btn btn-light">Leer más...</a>
-                    </div>
-                </div>
+                    }*@
+                <a asp-route-id="@n.id" asp-action="DetalleNoticia" asp-controller="Home" class="btn btn-light">Leer más...</a>
+            </div>
+            <div class="card-footer text-muted">
+                <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", n.fecha_alta))</small></p>
             </div>
         </div>
     }
