@@ -163,7 +163,7 @@ else
             <div class="card">
                 <img class="card-img-top" src="@("/image/" + ViewBag.portfolio.imagen)" alt="Card image portfolio" style="object-fit: cover">
                 <div class="card-body">
-                    <h5 class="card-title">@ViewBag.portfolio.titulo</h5>
+                    <h5 class="card-title">@acortarTitulo(ViewBag.portfolio.titulo)</h5>
                     @*<p class="card-text">@item.descripcion</p>*@
                     <p class="card-text"><small class="text-muted">#Portfolio</small></p>
                     <div class="text-center">
@@ -187,7 +187,7 @@ else
                     <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardPodcasts)" alt="Card image podcasts" style="object-fit: cover">
                 }
                 <div class="card-body">
-                    <h5 class="card-title">@ViewBag.podcast.titulo</h5>
+                    <h5 class="card-title">@acortarTitulo(ViewBag.podcast.titulo)</h5>
                     @*<p class="card-text">@item.descripcion</p>*@
                     <p class="card-text"><small class="text-muted">#Podcasts</small></p>
                     <div class="text-center">
@@ -201,7 +201,7 @@ else
             <div class="card">
                 <img class="card-img-top" src="@("/image/" + ViewBag.tip.imagen)" alt="Card image tips" style="object-fit: cover">
                 <div class="card-body">
-                    <h5 class="card-title">@ViewBag.tip.titulo</h5>
+                    <h5 class="card-title">@acortarTitulo(ViewBag.tip.titulo)</h5>
                     @*<p class="card-text">@item.descripcion</p>*@
                     <p class="card-text"><small class="text-muted">#Tips</small></p>
                     <div class="text-center">
@@ -240,7 +240,7 @@ else
                 <div class="card">
                     <img class="card-img-top" src="@("/image/" + ViewBag.portfolioFav.imagen)" alt="Card image portfolio" style="object-fit: cover">
                     <div class="card-body">
-                        <h5 class="card-title">@ViewBag.portfolioFav.titulo</h5>
+                        <h5 class="card-title">@acortarTitulo(ViewBag.portfolioFav.titulo)</h5>
                         @*<p class="card-text">@item.descripcion</p>*@
                         <p class="card-text"><small class="text-muted">#Portfolio</small></p>
                         <div class="text-center">
@@ -264,7 +264,7 @@ else
                         <img class="card-img-top" src="@("/image/" + ViewBag.config.imagenCardPodcasts)" alt="Card image podcasts" style="object-fit: cover">
                     }
                     <div class="card-body">
-                        <h5 class="card-title">@ViewBag.podcastFab.titulo</h5>
+                        <h5 class="card-title">@acortarTitulo(ViewBag.podcastFab.titulo)</h5>
                         @*<p class="card-text">@item.descripcion</p>*@
                         <p class="card-text"><small class="text-muted">#Podcasts</small></p>
                         <div class="text-center">
@@ -278,7 +278,7 @@ else
                 <div class="card">
                     <img class="card-img-top" src="@("/image/" + ViewBag.tipFab.imagen)" alt="Card image tips" style="object-fit: cover">
                     <div class="card-body">
-                        <h5 class="card-title">@ViewBag.tipFab.titulo</h5>
+                        <h5 class="card-title">@acortarTitulo(ViewBag.tipFab.titulo)</h5>
                         @*<p class="card-text">@item.descripcion</p>*@
                         <p class="card-text"><small class="text-muted">#Tips</small></p>
                         <div class="text-center">
