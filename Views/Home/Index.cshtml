@@ -4,6 +4,25 @@
     ViewData["Title"] = "Home Page";
 }
 
+@*funcion para acortar los strings y agregarle ... si i=1 asumo que es un titulo, si i=2 una descripcion*@
+@functions {
+    public string acortarTitulo(string s)
+    {
+        string ss = s;
+
+        if (s != null && s.Length >= 28)
+        {
+            //descripcion
+            ss = ss.Substring(0, 28);
+            ss += "...";
+
+        }
+
+        return ss;
+        //return "Hello";
+    }
+}
+
 @if (ViewBag.config == null)
 {
     if (User.Identity.IsAuthenticated)
@@ -111,7 +130,7 @@ else
                 <div class="card">
                     <img class="card-img-top" src="@("/image/" + item.imagen)" alt="Card image" style="object-fit: cover">
                     <div class="card-body">
-                        <h5 class="card-title">@item.titulo</h5>
+                        <h5 class="card-title">@acortarTitulo(item.titulo)</h5>
                         @*<p class="card-text">@Html.Raw(item.descripcion)</p>*@
                         <p class="card-text"><small class="text-muted">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.fecha_alta))</small></p>
                         <div class="text-center">
@@ -210,8 +229,8 @@ else
         dos veces lo mismo. Por lo tanto si una de las 3 es diferente ahí recién muestra las publicaciones favoritas*@
 
     @if (ViewBag.portfolioFav.id != ViewBag.portfolio.id ||
-     ViewBag.podcastFab.id != ViewBag.podcast.id ||
-     ViewBag.tipFab.id != ViewBag.tip.id)
+   ViewBag.podcastFab.id != ViewBag.podcast.id ||
+   ViewBag.tipFab.id != ViewBag.tip.id)
     {
         <div class="text-center m-5">
             <h3>Mis publicaciones favoritas...</h3>
