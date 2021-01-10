@@ -17,7 +17,7 @@ Si hay mas de una publicacíon en las secciones y estas son diferentes a las que
 
 ![Screenshot_4](https://user-images.githubusercontent.com/45102218/104125795-da8e5600-5337-11eb-99ba-02a973aaa23e.png)
 
-Portfolio, Podcasts, Tips
+Noticias (Home), Portfolio, Podcasts, Tips
 
 En cada una de estas secciones se muestran todas las publicaciones creadas por el autor que son "Visibles". Al seleccionar cualquiera de ellas se puede ver toda la información que posee asociada. En todas se puede agregar un título, descripción, contenido, imagen, valoración (prioridad), video de youtube. Y en podcast se puede agregar además un podcast de spotify.
 
