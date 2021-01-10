@@ -86,7 +86,7 @@ namespace PortfolioCore.Controllers
                 //guarda la imagen en wwwroot/image
                 string wwwRootPath = _hostEnvironment.WebRootPath;
 
-                string fileName = "archivoImagen1Home";
+                string fileName = "archivoImagen1H";
                 string extension = Path.GetExtension(config.archivoImagen1Home.FileName);
                 config.imagen1Home = fileName += extension;
                 string path = Path.Combine(wwwRootPath + "/image/", fileName);
@@ -98,7 +98,7 @@ namespace PortfolioCore.Controllers
 
                 if (config.archivoImagen2Home != null && config.visibleH2 == true)
                 {
-                    string fileName2 = "archivoImagen2Home";
+                    string fileName2 = "archivoImagen2H";
                     string extension2 = Path.GetExtension(config.archivoImagen2Home.FileName);
                     config.imagen2Home = fileName2 += extension2;
                     string path2 = Path.Combine(wwwRootPath + "/image/", fileName2);
@@ -111,7 +111,7 @@ namespace PortfolioCore.Controllers
 
                 if (config.archivoImagen3Home != null && config.visibleH3 == true)
                 {
-                    string fileName3 = "archivoImagen3Home";
+                    string fileName3 = "archivoImagen3H";
                     string extension3 = Path.GetExtension(config.archivoImagen3Home.FileName);
                     config.imagen3Home = fileName3 += extension3;
                     string path3 = Path.Combine(wwwRootPath + "/image/", fileName3);
@@ -125,7 +125,7 @@ namespace PortfolioCore.Controllers
 
                 if (config.archivoImagenCardPodcasts != null)
                 {
-                    string fileNameCP = "archivoImagenCardPodcasts";
+                    string fileNameCP = "archivoImagenCardPod";
                     string extensionCP = Path.GetExtension(config.archivoImagenCardPodcasts.FileName);
                     config.imagenCardPodcasts = fileNameCP += extensionCP;
                     string pathCP = Path.Combine(wwwRootPath + "/image/", fileNameCP);
@@ -139,7 +139,7 @@ namespace PortfolioCore.Controllers
                 
                 if (config.archivoimagenPortfolio != null && config.visiblePorf == true)
                 {
-                    string fileNameR = "archivoimagenPortfolio";
+                    string fileNameR = "archivoimagenPort";
                     string extensionR = Path.GetExtension(config.archivoimagenPortfolio.FileName);
                     config.imagenPortfolio = fileNameR += extensionR;
                     string pathR = Path.Combine(wwwRootPath + "/image/", fileNameR);
@@ -152,7 +152,7 @@ namespace PortfolioCore.Controllers
 
                 if (config.archivoImagenPodcasts != null && config.visibleP == true)
                 {
-                    string fileNameP = "archivoImagenPodcasts";
+                    string fileNameP = "archivoImagenPod";
                     string extensionP = Path.GetExtension(config.archivoImagenPodcasts.FileName);
                     config.imagenPodcasts = fileNameP += extensionP;
                     string pathP = Path.Combine(wwwRootPath + "/image/", fileNameP);
@@ -165,7 +165,7 @@ namespace PortfolioCore.Controllers
 
                 if (config.archivoImagenTips != null && config.visibleT == true)
                 {
-                    string fileNameT = "archivoImagenTips";
+                    string fileNameT = "archivoImagenTip";
                     string extensionT = Path.GetExtension(config.archivoImagenTips.FileName);
                     config.imagenTips = fileNameT += extensionT;
                     string pathT = Path.Combine(wwwRootPath + "/image/", fileNameT);
@@ -235,7 +235,7 @@ namespace PortfolioCore.Controllers
 
                     if (config.archivoImagen1Home != null)
                     {
-                        string fileName = "archivoImagen1Home";
+                        string fileName = "archivoImagen1H";
                         string extension = Path.GetExtension(config.archivoImagen1Home.FileName);
                         config.imagen1Home = fileName += extension;
                         path = Path.Combine(wwwRootPath + "/image/", fileName);
@@ -248,7 +248,7 @@ namespace PortfolioCore.Controllers
 
                     if (config.archivoImagen2Home != null && config.visibleH2 == true)
                     {
-                        string fileName2 = "archivoImagen2Home";
+                        string fileName2 = "archivoImagen2H";
                         string extension2 = Path.GetExtension(config.archivoImagen2Home.FileName);
                         config.imagen2Home = fileName2 += extension2;
                         path2 = Path.Combine(wwwRootPath + "/image/", fileName2);
@@ -271,7 +271,7 @@ namespace PortfolioCore.Controllers
 
                     if (config.archivoImagen3Home != null && config.visibleH3 == true)
                     {
-                        string fileName3 = "archivoImagen3Home";
+                        string fileName3 = "archivoImagen3H";
                         string extension3 = Path.GetExtension(config.archivoImagen3Home.FileName);
                         config.imagen3Home = fileName3 += extension3;
                         path3 = Path.Combine(wwwRootPath + "/image/", fileName3);
@@ -294,7 +294,7 @@ namespace PortfolioCore.Controllers
 
                     if (config.archivoImagenCardPodcasts != null)
                     {
-                        string fileNameCP = "archivoImagenCardPodcasts";
+                        string fileNameCP = "archivoImagenCardPod";
                         string extensionCP = Path.GetExtension(config.archivoImagenCardPodcasts.FileName);
                         config.imagenCardPodcasts = fileNameCP += extensionCP;
                         pathCP = Path.Combine(wwwRootPath + "/image/", fileNameCP);
@@ -308,7 +308,7 @@ namespace PortfolioCore.Controllers
                     
                     if (config.archivoimagenPortfolio != null && config.visiblePorf == true)
                     {
-                        string fileNameR = "archivoimagenPortfolio";
+                        string fileNameR = "archivoimagenPort";
                         string extensionR = Path.GetExtension(config.archivoimagenPortfolio.FileName);
                         config.imagenPortfolio = fileNameR += extensionR;
                         pathR = Path.Combine(wwwRootPath + "/image/", fileNameR);
@@ -331,7 +331,7 @@ namespace PortfolioCore.Controllers
 
                     if (config.archivoImagenPodcasts != null && config.visibleP == true)
                     {
-                        string fileNameP = "archivoImagenPodcasts";
+                        string fileNameP = "archivoImagenPod";
                         string extensionP = Path.GetExtension(config.archivoImagenPodcasts.FileName);
                         config.imagenPodcasts = fileNameP += extensionP;
                         pathP = Path.Combine(wwwRootPath + "/image/", fileNameP);
@@ -354,7 +354,7 @@ namespace PortfolioCore.Controllers
 
                     if (config.archivoImagenTips != null && config.visibleT == true)
                     {
-                        string fileNameT = "archivoImagenTips";
+                        string fileNameT = "archivoImagenTip";
                         string extensionT = Path.GetExtension(config.archivoImagenTips.FileName);
                         config.imagenTips = fileNameT += extensionT;
                         pathT = Path.Combine(wwwRootPath + "/image/", fileNameT);
