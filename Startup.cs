@@ -53,7 +53,7 @@ namespace PortfolioCore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext applicationDbContext, MvcConfigContext mvcConfigContext, MvcNoticiaContext mvcNoticiaContext, MvcPodcastContext mvcPodcastContext, MvcPortfolioContext mvcPortfolioContext, MvcRelatoContext mvcRelatoContext, MvcSobreMiContext mvcSobreMiContext, MvcTipContext mvcTipContext)
         {
             //if (env.IsDevelopment())
             if (env.IsProduction())
@@ -67,7 +67,18 @@ namespace PortfolioCore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
+
+            //app.UseHttpsRedirection();
+
+            applicationDbContext.Database.Migrate();
+            mvcConfigContext.Database.Migrate();
+            mvcNoticiaContext.Database.Migrate();
+            mvcPodcastContext.Database.Migrate();
+            mvcPortfolioContext.Database.Migrate();
+            mvcRelatoContext.Database.Migrate();
+            mvcSobreMiContext.Database.Migrate();
+            mvcTipContext.Database.Migrate();
+
             app.UseStaticFiles();
 
             app.UseRouting();
